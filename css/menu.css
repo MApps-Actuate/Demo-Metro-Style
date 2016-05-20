@@ -1,0 +1,134 @@
+#jquery-script-menu {
+position: fixed;
+height: 90px;
+width: 100%;
+top: 0;
+left: 0;
+border-top: 5px solid #316594;
+background: #fff;
+-moz-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+-webkit-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+z-index: 999999;
+padding: 10px 0;
+-webkit-box-sizing:content-box;
+-moz-box-sizing:content-box;
+box-sizing:content-box;
+}
+
+.jquery-script-center {
+width: 960px;
+margin: 0 auto;
+}
+.jquery-script-center ul {
+width: 212px;
+float:left;
+line-height:45px;
+margin:0;
+padding:0;
+list-style:none;
+}
+.jquery-script-center a {
+	text-decoration:none;
+}
+.jquery-script-ads {
+width: 728px;
+height:90px;
+float:right;
+}
+.jquery-script-clear {
+clear:both;
+height:0;
+}
+
+ul.iconmenu{
+font-size: 1em;
+list-style: none;
+position: fixed;
+left: 0;
+top: 50px; 
+margin: 0;
+padding: 0;
+background: #4295F0;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+/*z-index:99;*/
+}
+
+ul.iconmenu li{
+text-align: center;
+cursor: pointer;
+}
+
+ul.iconmenu li a{
+display: block;
+text-decoration: none;
+color: #FFFFFF;
+padding: 10px 7px;
+border-bottom: 1px solid white;
+}
+
+ul.iconmenu li a:last-of-type{
+border-bottom-width: 0;
+padding-bottom: 7px;
+margin-bottom: 3px;
+}
+
+ul.iconmenu li a:hover, ul.iconmenu li a.selected{ 
+background: #F6F6F6;
+color: #2B2B2B;
+}
+
+
+div.iconsubmenu{
+width:300px; 
+position:absolute;
+visibility:hidden;
+padding:0;
+background: #F6F6F6;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+border: 1px solid #E6E6E6;
+/* GLO z-index:99;*/
+}
+
+div.iconsubmenu a{
+text-decoration:none;
+font-family: 'Source Sans Pro', sans-serif;	
+ -webkit-font-smoothing: antialiased;
+font-size: 14px;
+font-weight: 800;
+color: #2B2B2B;
+position: relative;
+}
+
+div.iconsubmenu .arrow{ /* default look for arrow of sub menu */
+content: '';
+display: block;
+position:absolute;
+border: 0.4em solid transparent;
+border-right-color: #F6F6F6;
+top: 10px;
+}
+
+div.dropdownmenu{
+width:200px;
+}
+
+div.dropdownmenu ul{
+margin:0;
+padding:0;
+border-bottom-width:0;
+list-style:none;
+}
+
+div.dropdownmenu ul a{
+display:block;
+padding:5px;
+}
+
+div.dropdownmenu ul a:hover, div.dropdownmenu ul a.selected{ /* style for selected menu item */
+color: #2B2B2B;
+background-color : #DCDCDC;
+}

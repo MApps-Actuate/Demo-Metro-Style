@@ -1,0 +1,2320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v20150206-1039 Build &lt;4.2.3.v20150206-1039></property>
+    <simple-property-list name="includeResource">
+        <value>Translation</value>
+    </simple-property-list>
+    <property name="units">in</property>
+    <method name="beforeFactory"><![CDATA[myVar1=true;]]></method>
+    <property name="theme">SampleApplication.Demo 2015</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">Report Libraries\BIRT Online Maps.rptlibrary</property>
+            <property name="namespace">BIRT Online Maps</property>
+        </structure>
+        <structure>
+            <property name="fileName">Report Libraries/SampleApplication.rptlibrary</property>
+            <property name="namespace">SampleApplication</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="pState" id="81">
+            <property name="hidden">true</property>
+            <text-property name="promptText">State</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="isRequired">false</property>
+            <property name="dataSetName">MapData</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["STATE"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["STATE"]</expression>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">CA</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">multi-value</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="pBackLink" id="233">
+            <property name="hidden">true</property>
+            <text-property name="promptText">Back Link</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">boolean</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">false</value>
+            </simple-property-list>
+            <property name="paramType">simple</property>
+            <property name="controlType">check-box</property>
+            <structure name="format"/>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="com.actuate.data.oda.static" name="Static Data Source" id="347"/>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="com.actuate.data.oda.static.dataSet" name="MapData" id="348">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">IntDollars</property>
+                    <expression name="expression" type="javascript">row["DOLLARS"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">Avg Sale</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">AVE</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["IntDollars"]</expression>
+                        </structure>
+                    </list-property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">RECOVERY_ID</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">Sales Rep</text-property>
+                    <text-property name="heading">RECOVERY_ID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">CITY</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">CITY</text-property>
+                    <text-property name="heading">CITY</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">STATE</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">STATE</text-property>
+                    <text-property name="heading">STATE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">VOLUNTEERS</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">VOLUNTEERS</text-property>
+                    <text-property name="heading">VOLUNTEERS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">DOLLARS</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">DOLLARS</text-property>
+                    <text-property name="heading">DOLLARS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">MEMBER_DOLLARS</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">MEMBER_DOLLARS</text-property>
+                    <text-property name="heading">MEMBER_DOLLARS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PROGRAMS</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">PROGRAMS</text-property>
+                    <text-property name="heading">PROGRAMS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">LATITUDE</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">LATITUDE</text-property>
+                    <text-property name="heading">LATITUDE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">LONGITUDE</property>
+                    <property name="analysis">attribute</property>
+                    <text-property name="displayName">LONGITUDE</text-property>
+                    <text-property name="heading">LONGITUDE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">IntDollars</property>
+                    <property name="analysis">measure</property>
+                </structure>
+                <structure>
+                    <property name="columnName">Avg Sale</property>
+                    <property name="analysis">measure</property>
+                </structure>
+            </list-property>
+            <list-property name="filter">
+                <structure>
+                    <property name="operator">in</property>
+                    <expression name="expr" type="javascript">row["STATE"]</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">"WA"</value>
+                        <value type="javascript">"CA"</value>
+                        <value type="javascript">"IL"</value>
+                        <value type="javascript">"NY"</value>
+                        <value type="javascript">"LA"</value>
+                    </simple-property-list>
+                </structure>
+                <structure>
+                    <property name="operator">gt</property>
+                    <expression name="expr" type="javascript">row["DOLLARS"]</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">25000</value>
+                    </simple-property-list>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">RECOVERY_ID</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">CITY</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">STATE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">VOLUNTEERS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">DOLLARS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">MEMBER_DOLLARS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">PROGRAMS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">LATITUDE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">LONGITUDE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">IntDollars</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">Avg Sale</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Static Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">RECOVERY_ID</property>
+                    <property name="nativeName">RECOVERY_ID</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">CITY</property>
+                    <property name="nativeName">CITY</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">STATE</property>
+                    <property name="nativeName">STATE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">VOLUNTEERS</property>
+                    <property name="nativeName">VOLUNTEERS</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">DOLLARS</property>
+                    <property name="nativeName">DOLLARS</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">MEMBER_DOLLARS</property>
+                    <property name="nativeName">MEMBER_DOLLARS</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">PROGRAMS</property>
+                    <property name="nativeName">PROGRAMS</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">LATITUDE</property>
+                    <property name="nativeName">LATITUDE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">LONGITUDE</property>
+                    <property name="nativeName">LONGITUDE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">1</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[{"Columns":["RECOVERY_ID","CITY","STATE","VOLUNTEERS","DOLLARS","MEMBER_DOLLARS","PROGRAMS","LATITUDE","LONGITUDE"],"Types":[1,1,1,1,1,1,1,1,1]}]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>RECOVERY_ID</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>RECOVERY_ID</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>RECOVERY_ID</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>CITY</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>CITY</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>CITY</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>STATE</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>STATE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>STATE</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>VOLUNTEERS</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>VOLUNTEERS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>VOLUNTEERS</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DOLLARS</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>DOLLARS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DOLLARS</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>MEMBER_DOLLARS</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>MEMBER_DOLLARS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>MEMBER_DOLLARS</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>PROGRAMS</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>PROGRAMS</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>PROGRAMS</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LATITUDE</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>LATITUDE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LATITUDE</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LONGITUDE</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>1</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>LONGITUDE</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LONGITUDE</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>IntDollars</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>3</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>IntDollars</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>IntDollars</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>Avg Sale</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+            <design:uiHints>
+              <design:displayName>Avg Sale</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>Avg Sale</design:label>
+            <design:formattingHints>
+              <design:displaySize>-1</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>DATA</name>
+                    <value>[["STATE_NATIONAL","Anchorage","AK","16","228840","0","1","61.2148","-149.8769"],["VISTA","Anchorage","AK","17","37500","264218.59","2","61.2053","-149.8769"],["VISTA","Fairbanks","AK","4","0","62169.08","2","64.8363","-147.7213"],["VISTA","Juneau","AK","1","0","15542.27","1","58.3477","-134.5181"],["STATE_NATIONAL","Sitka","AK","4","56551","0","1","57.0622","-135.3481"],["VISTA","Birmingham","AL","15","24000","233134.05","3","33.5077","-86.7562"],["STATE_NATIONAL","Greenville","AL","10","129529","0","1","31.8118","-86.6183"],["VISTA","Livingston","AL","5","0","77711.35","1","32.575","-88.1564"],["VISTA","Mobile","AL","7","12000","108795.89","1","30.6915","-88.0448"],["VISTA","Montgomery","AL","3","6000","46626.81","1","32.3685","-86.1738"],["STATE_NATIONAL","Opelika","AL","6","117696","0","1","32.653","-85.3896"],["STATE_NATIONAL","Selma","AL","15","151906","0","1","32.4147","-87.0297"],["VISTA","Tuscaloosa","AL","2","0","31084.54","1","33.1952","-87.5665"],["VISTA","Conway","AR","15","0","2260497.08","1","35.0821","-92.4711"],["VISTA","El Dorado","AR","2","0","31084.54","1","33.2112","-92.6587"],["VISTA","Fayetteville","AR","7","0","293101.62","3","36.0494","-94.1593"],["VISTA","Ft. Smith","AR","1","0","15542.27","1","35.3511","-94.351"],["VISTA","Harrison","AR","19","0","295303.13","1","36.2388","-93.1025"],["VISTA","Little Rock","AR","64","0","3943596.96","6","34.662","-92.3475"],["STATE_NATIONAL","Little Rock","AR","19","206563","0","3","34.6738","-92.473"],["STATE_NATIONAL","Morrilton","AR","5","65500","0","1","35.1596","-92.7461"],["VISTA","North Little Rock","AR","7","0","661713.08","2","34.7655","-92.2659"],["VISTA","Pine Bluff","AR","3","0","46626.81","1","34.2153","-91.9955"],["VISTA","Springdale","AR","1","0","15542.27","1","36.1779","-94.1118"],["VISTA","Texarkana","AR","11","0","170964.97","1","33.4388","-94.0803"],["STATE_NATIONAL","West Helena","AR","40","503904","0","1","34.5486","-90.6554"],["VISTA","West Helena","AR","11","0","1092493.62","1","34.5486","-90.6554"],["STATE_NATIONAL","Pago Pago","AS","38","424459","0","5","14.27","-170.7"],["STATE_NATIONAL","Flagstaff","AZ","49","337009","0","2","35.1877","-111.6556"],["STATE_NATIONAL","Flagstaff","AZ","57","400818","0","1","35.2324","-111.5682"],["STATE_NATIONAL","Guadalupe","AZ","0","75000","0","1","33.366","-111.9334"],["VISTA","Mesa","AZ","57","0","8258138.59","1","33.4293","-111.8471"],["VISTA","Phoenix","AZ","15","0","601745.51","3","33.4487","-112.0901"],["VISTA","Prescott Valley","AZ","17","339950","264218.59","1","34.6029","-112.3263"],["STATE_NATIONAL","Tempe","AZ","60","26400","0","1","33.4243","-111.9294"],["STATE_NATIONAL","Tucson","AZ","31","253543","0","3","32.2162","-111.0167"],["VISTA","Tucson","AZ","17","89107","264218.59","1","32.2162","-110.8837"],["Hernandez","Anaheim","CA","31","0","4167924.97","1","33.8425","-117.9531"],["Hernandez","Bakersfield","CA","0","25360","0","1","35.3836","-119.0189"],["Hernandez","Escondido","CA","3","0","46626.81","1","33.1112","-117.0715"],["Hernandez","Eureka","CA","44","25000","683859.88","1","40.7935","-124.1583"],["Hernandez","Eureka","CA","64","784655","0","1","40.7935","-124.1583"],["Hernandez","Fresno","CA","4","0","62169.08","1","36.7357","-119.7857"],["Hernandez","Fullerton","CA","21","235123","0","1","33.8795","-117.8917"],["Hernandez","Hollywood","CA","2","0","31084.54","1","34.0885","-118.3253"],["Hernandez","Irvine","CA","13","28140","202049.51","1","33.6834","-117.8408"],["Hernandez","Lakeport","CA","37","385051","0","1","39.0526","-122.9204"],["Hernandez","Long Beach","CA","20","252000","0","1","33.7616","-118.1371"],["Hernandez","Los Angeles","CA","32","989855","0","2","34.0449","-118.2528"],["Hernandez","Los Angeles","CA","2","0","31084.54","1","33.9601","-118.3933"],["Hernandez","Napa","CA","70","1657168","0","1","38.2919","-122.2872"],["Hernandez","North Fork","CA","3","0","46626.81","1","37.209","-119.5481"],["Hernandez","North Highlands","CA","58","1274183","0","4","38.6787","-121.3755"],["Hernandez","North Highlands","CA","0","52000","0","1","38.6787","-121.3755"],["Hernandez","Oakland","CA","9","15000","139880.43","1","37.8327","-122.2632"],["Hernandez","Redding","CA","7","3000","108795.89","1","40.5615","-122.4009"],["Hernandez","Redding","CA","10","167336","0","2","40.6186","-122.3516"],["Hernandez","Redwood City","CA","0","298183","0","1","37.4497","-122.2588"],["Hernandez","Richmond","CA","10","24960","155422.7","2","37.9251","-122.3656"],["Hernandez","Richmond","CA","220","886659","0","1","37.9251","-122.3372"],["Hernandez","Sacramento","CA","119","1552000","0","1","38.5733","-121.4705"],["Hernandez","Sacramento","CA","31","100000","850421.83","6","38.552","-121.4936"],["Hernandez","San Diego","CA","3","0","46626.81","1","32.7422","-117.0955"],["Hernandez","San Francisco","CA","16","0","248676.32","4","37.774","-122.4174"],["Hernandez","San Francisco","CA","122","345382","0","1","37.774","-122.4124"],["Hernandez","San Jose","CA","36","370933","0","2","37.3343","-121.8991"],["Hernandez","San Pedro","CA","8","0","124338.16","1","33.7331","-118.2912"],["Hernandez","San Rafael","CA","0","63000","0","1","37.9715","-122.5174"],["Hernandez","Santa Barbara","CA","52","282614","0","1","34.4417","-119.7641"],["Hernandez","Ventura","CA","6","0","646170.81","1","34.2669","-119.2256"],["Hernandez","Visalia","CA","1","0","15542.27","1","36.3093","-119.3142"],["Hernandez","Yreka","CA","10","20000","155422.7","1","41.7221","-122.643"],["VISTA","Arvada","CO","13","21000","202049.51","1","39.7953","-105.098"],["VISTA","Avon","CO","10","0","1076951.35","1","39.6357","-106.5236"],["VISTA","Boulder","CO","3","0","46626.81","2","40.0187","-105.2872"],["STATE_NATIONAL","Center","CO","5","2550","0","1","37.8288","-106.0921"],["STATE_NATIONAL","Denver","CO","572","1099454","0","3","39.7328","-105.0229"],["VISTA","Denver","CO","41","14000","4139041.94","4","39.7328","-105.0229"],["VISTA","Durango","CO","34","0","4767468.97","1","37.3236","-107.8436"],["STATE_NATIONAL","Grand Junction","CO","5","65500","0","1","39.0765","-108.5495"],["STATE_NATIONAL","Greeley","CO","13","100800","0","1","40.416","-104.6962"],["STATE_NATIONAL","Steamboat Springs","CO","6","78600","0","1","40.4827","-106.829"],["VISTA","Westminster","CO","8","0","124338.16","2","39.8289","-105.0371"],["STATE_NATIONAL","Hartford","CT","24","325090","0","1","41.7689","-72.7009"],["VISTA","New Haven","CT","12","0","1292341.62","2","41.3153","-72.9287"],["STATE_NATIONAL","Washington","DC","576","3072369","0","6","38.9031","-77.0508"],["STATE_NATIONAL","Washington","DC","7","282772","0","3","38.9065","-77.0417"],["VISTA","Washington","DC","34","301507","897048.64","10","38.8836","-77.0719"],["STATE_NATIONAL","Dover","DE","41","153895","0","1","39.1609","-75.5152"],["VISTA","Dover","DE","1","0","15542.27","1","39.1692","-75.5742"],["STATE_NATIONAL","Georgetown","DE","5","84388","0","1","38.681","-75.3867"],["VISTA","Wilmington","DE","5","0","77711.35","1","39.7574","-75.5327"],["VISTA","Bartow","FL","2","0","31084.54","1","27.8952","-81.8193"],["STATE_NATIONAL","Bonita Springs","FL","15","189895","0","1","26.3531","-81.8247"],["VISTA","Bradenton","FL","2","1500","31084.54","1","27.4898","-82.6289"],["STATE_NATIONAL","Florida City","FL","3","50841","0","1","25.4435","-80.4926"],["STATE_NATIONAL","Ft. Lauderdale","FL","0","45509","0","1","26.1372","-80.1229"],["STATE_NATIONAL","Ft. Pierce","FL","16","104800","0","1","27.447","-80.3369"],["VISTA","Gainesville","FL","1","0","15542.27","1","29.6509","-82.3264"],["VISTA","Jacksonville","FL","1","0","15542.27","1","30.2947","-81.6358"],["STATE_NATIONAL","Jacksonville","FL","20","493618","0","1","30.281","-81.5832"],["VISTA","Miami","FL","11","0","1276799.35","2","25.7684","-80.2035"],["STATE_NATIONAL","Miami","FL","37","716025","0","4","25.6604","-80.4083"],["STATE_NATIONAL","Niceville","FL","12","193888","0","1","30.5018","-86.4494"],["VISTA","Orlando","FL","6","0","93253.62","2","28.5314","-81.4034"],["STATE_NATIONAL","Palatka","FL","0","81800","0","1","29.653","-81.6631"],["VISTA","Pensacola","FL","9","13000","139880.43","1","30.4101","-87.2226"],["STATE_NATIONAL","Quincy","FL","10","191972","0","1","30.5521","-84.634"],["VISTA","Sarasota","FL","18","21000","279760.86","1","27.3317","-82.5479"],["STATE_NATIONAL","St. Augustine","FL","6","108058","0","1","29.8917","-81.3171"],["VISTA","Tallahassee","FL","72","38000","7016826.8","2","30.4417","-84.3255"],["STATE_NATIONAL","Tallahassee","FL","18","285066","0","1","30.4357","-84.2794"],["VISTA","Tampa","FL","4","0","615086.27","1","27.9938","-82.3985"],["STATE_NATIONAL","Albany","GA","6","85332","0","1","31.5747","-84.1615"],["VISTA","Atlanta","GA","206","227658","7072127.95","11","33.7254","-84.4412"],["STATE_NATIONAL","Atlanta","GA","138","1986649","0","1","33.7564","-84.3894"],["STATE_NATIONAL","Atlanta","GA","22","506315","0","3","33.7564","-84.4412"],["VISTA","Augusta","GA","21","12000","2169444.97","1","33.4714","-81.9672"],["VISTA","Austell","GA","4","0","62169.08","1","33.836","-84.6238"],["VISTA","Clarkston","GA","4","0","62169.08","2","33.8072","-84.2386"],["VISTA","Columbus","GA","3","0","46626.81","1","32.4709","-84.9806"],["VISTA","Dalton","GA","12","6998","923730.16","1","34.7705","-84.9841"],["VISTA","Decatur","GA","3","0","46626.81","1","33.8105","-84.2858"],["STATE_NATIONAL","Decatur","GA","6","90629","0","1","33.7429","-84.263"],["STATE_NATIONAL","Douglasville","GA","4","101746","0","1","33.6933","-84.7379"],["VISTA","Macon","GA","4","0","62169.08","1","32.8014","-83.6766"],["STATE_NATIONAL","Macon","GA","6","78600","0","1","32.8355","-83.637"],["STATE_NATIONAL","Marietta","GA","27","651711","0","2","33.9291","-84.5484"],["VISTA","Marietta","GA","1","0","15542.27","1","33.9291","-84.5484"],["VISTA","Savannah","GA","8","0","124338.16","1","32.0677","-81.0934"],["VISTA","Stone Mountain","GA","4","0","62169.08","1","33.7972","-84.1992"],["STATE_NATIONAL","Manilao","GU","32","340113","0","1","13.4665","-144.7928"],["VISTA","Hilo","HI","2","0","31084.54","1","19.703","-155.0868"],["STATE_NATIONAL","Honolulu","HI","45","1208309","0","2","21.3101","-157.8541"],["VISTA","Honolulu","HI","18","21000","279760.86","3","21.2969","-157.8441"],["STATE_NATIONAL","Wailuku","HI","13","79965","0","1","20.8884","-156.5027"],["STATE_NATIONAL","Cedar Rapids","IA","13","188851","0","1","41.9476","-91.6917"],["VISTA","Cedar Rapids","IA","60","128800","932536.2","2","41.9476","-91.6917"],["VISTA","Council Bluffs","IA","1","0","15542.27","1","41.2503","-95.877"],["STATE_NATIONAL","Des Moines","IA","171","711686","0","2","41.5869","-93.6231"],["VISTA","Des Moines","IA","48","20000","2589086.26","11","41.5851","-93.6716"],["STATE_NATIONAL","Dubuque","IA","30","186201","0","1","42.5151","-90.6845"],["STATE_NATIONAL","Mason City","IA","40","328644","0","1","43.1505","-93.199"],["VISTA","Mason City","IA","1","0","15542.27","1","43.1505","-93.199"],["VISTA","Waverly","IA","21","20000","2169444.97","1","42.7302","-92.4683"],["VISTA","Boise","ID","20","0","310845.4","4","43.5862","-116.2282"],["VISTA","Garden City","ID","4","0","62169.08","1","43.6709","-116.276"],["STATE_NATIONAL","Lewiston","ID","68","786000","0","1","46.3911","-116.9893"],["Bott","Arlington Heights","IL","7","0","108795.89","1","42.0645","-87.9834"],["Bott","Belleville","IL","12","0","186507.24","1","38.551","-90.0509"],["Bott","Belleville","IL","17","63091","0","1","38.5296","-89.9403"],["Bott","Champaign","IL","3","0","46626.81","1","40.1124","-88.2429"],["Bott","Chicago","IL","99","28200","4303270.68","16","41.8693","-87.7385"],["Bott","Chicago","IL","101","1819840","0","6","41.88","-87.7023"],["Bott","Davenport","IL","8","146449","0","2","41.5224","-90.5756"],["Bott","Des Plaines","IL","6","0","93253.62","1","42.0097","-87.8893"],["Bott","Dixon","IL","20","131003","0","1","41.846","-89.4824"],["Bott","East Peoria","IL","6","0","93253.62","1","40.7047","-89.522"],["Bott","East St. Louis","IL","30","196550","0","1","38.6152","-90.1278"],["Bott","East St. Louis","IL","1","0","15542.27","1","38.5971","-90.0751"],["Bott","Evanston","IL","9","0","139880.43","3","42.0471","-87.6933"],["Bott","Lawrenceville","IL","8","36000","124338.16","1","38.7261","-87.6785"],["Bott","Macomb","IL","4","25200","0","1","40.456","-90.6677"],["Bott","Macomb","IL","5","0","77711.35","1","40.456","-90.6677"],["Bott","McHenry","IL","10","49240","0","1","42.3408","-88.2809"],["Bott","Monmouth","IL","4","0","62169.08","4","40.9142","-90.6435"],["Bott","Oak Park","IL","1","0","15542.27","1","41.8882","-87.7994"],["Bott","Olympia Fields","IL","10","125998","0","1","41.5169","-87.6949"],["Bott","Rockford","IL","2","12000","31084.54","1","42.2975","-89.1196"],["Bott","Springfield","IL","36","226181","0","1","39.7945","-89.6245"],["Bott","Springfield","IL","19","0","295303.13","1","39.7728","-89.6338"],["Bott","Waukegan","IL","2","0","31084.54","1","42.3612","-87.8598"],["STATE_NATIONAL","Bloomington","IN","2","66000","0","1","39.136","-86.5047"],["STATE_NATIONAL","Franklin","IN","18","94627","0","1","39.4837","-86.0581"],["VISTA","Huntington","IN","3","0","46626.81","1","40.8814","-85.4962"],["VISTA","Indianapoils","IN","13","20000","202049.51","1","39.771","-86.1566"],["STATE_NATIONAL","Indianapolis","IN","0","12947","0","1","39.782","-86.1599"],["VISTA","Indianapolis","IN","50","197123","777113.5","6","39.782","-86.2256"],["STATE_NATIONAL","Notre Dame","IN","41","70000","0","1","41.7079","-86.2539"],["STATE_NATIONAL","Richmond","IN","43","214468","0","1","39.8322","-84.8915"],["STATE_NATIONAL","Scottsburg","IN","16","116419","0","1","38.6829","-85.8016"],["VISTA","South Bend","IN","1","0","15542.27","1","41.692","-86.2644"],["STATE_NATIONAL","Terre Haute","IN","5","35007","0","1","39.4723","-87.4048"],["VISTA","Kansas City","KS","7","0","108795.89","3","39.0847","-94.6333"],["VISTA","Lawrence","KS","7","0","108795.89","4","38.9348","-95.2899"],["VISTA","Lenexa","KS","10","0","155422.7","1","38.9591","-94.7411"],["VISTA","Manhattan","KS","3","0","46626.81","1","39.1886","-96.5747"],["STATE_NATIONAL","Manhattan","KS","99","54000","0","1","39.1886","-96.5747"],["STATE_NATIONAL","Pratt","KS","25","277757","0","1","37.6447","-98.7443"],["VISTA","Salina","KS","1","0","15542.27","1","38.8251","-97.6077"],["VISTA","Topeka","KS","14","30809","217591.78","1","39.0369","-95.7004"],["STATE_NATIONAL","Topeka","KS","0","30000","0","1","39.0436","-95.6807"],["VISTA","Wichita","KS","1","0","15542.27","1","37.7021","-97.2791"],["STATE_NATIONAL","Wichita","KS","19","269174","0","2","37.6872","-97.3355"],["VISTA","Bledsoe","KY","3","0","46626.81","1","36.8997","-83.3524"],["VISTA","Elizabethtown","KY","3","0","46626.81","1","37.7081","-85.8596"],["STATE_NATIONAL","Frankfort","KY","27","288187","0","2","38.1969","-84.8687"],["VISTA","Frankfort","KY","10","0","155422.7","1","38.202","-84.8792"],["STATE_NATIONAL","Glasgow","KY","14","177292","0","1","36.9767","-85.9196"],["VISTA","Hagerhill","KY","5","0","77711.35","1","37.7813","-82.8258"],["VISTA","Lexington","KY","16","0","1538816.43","1","38.0465","-84.4963"],["STATE_NATIONAL","Louisville","KY","10","124576","0","1","38.2442","-85.764"],["VISTA","Louisville","KY","26","0","1694239.13","4","38.218","-85.7637"],["VISTA","Morehead","KY","9","0","1061409.08","1","38.1959","-83.4322"],["VISTA","Newport","KY","4","0","62169.08","1","39.091","-84.4972"],["STATE_NATIONAL","Owensboro","KY","12","154000","0","2","37.7528","-87.1555"],["VISTA","Owensboro","KY","2","0","31084.54","1","37.7748","-87.1661"],["STATE_NATIONAL","Somerset","KY","5","65500","0","1","37.0736","-84.5597"],["VISTA","Stearns","KY","14","0","2060649.08","1","36.7077","-84.5679"],["Jones","BATON ROUGE","LA","5","0","77711.35","1","30.4039","-91.0801"],["Jones","Baton Rouge","LA","8","0","124338.16","2","30.4495","-91.1869"],["Jones","Baton Rouge","LA","61","1066604","0","3","30.4443","-91.1869"],["Jones","Chalmette","LA","7","0","108795.89","1","29.9462","-89.9615"],["Jones","New Orleans","LA","10","140547","0","1","29.9633","-90.1128"],["Jones","New Orleans","LA","25","40000","3337448.43","4","29.9271","-90.203"],["Jones","Shreveport","LA","12","146941","0","1","32.4836","-93.7359"],["STATE_NATIONAL","Barnstable","MA","6","153390","0","1","41.6992","-70.3014"],["VISTA","Barnstable","MA","2","0","31084.54","1","41.6992","-70.3014"],["VISTA","Boston","MA","24","10000","373014.48","7","42.3239","-71.1007"],["STATE_NATIONAL","Boston","MA","75","1711972","0","7","42.3437","-71.1007"],["STATE_NATIONAL","Boston","MA","90","1987712","0","4","42.3484","-71.0754"],["STATE_NATIONAL","Brockton","MA","0","24532","0","1","42.0883","-71.0021"],["VISTA","Cambridge","MA","2","0","31084.54","1","42.3918","-71.1287"],["STATE_NATIONAL","Cambridge","MA","0","45310","0","1","42.3705","-71.0843"],["STATE_NATIONAL","Chelsea","MA","10","204485","0","1","42.3967","-71.0335"],["VISTA","Chelsea","MA","5","0","446322.81","1","42.3967","-71.0335"],["STATE_NATIONAL","Dorchester","MA","20","262000","0","1","42.2876","-71.0725"],["VISTA","Dorchester","MA","6","0","830476.54","1","42.2876","-71.0725"],["VISTA","East Boston","MA","4","0","430780.54","1","42.3766","-71.0295"],["STATE_NATIONAL","Fall River","MA","33","455748","0","1","41.7013","-71.1543"],["VISTA","Fitchburg","MA","4","0","62169.08","3","42.5798","-71.805"],["VISTA","Greenfield","MA","4","0","62169.08","1","42.5987","-72.5999"],["VISTA","Hatfield","MA","2","0","31084.54","1","42.3805","-72.6099"],["VISTA","Jamaica Plain","MA","4","0","62169.08","1","42.3134","-71.1112"],["VISTA","Lawrence","MA","4","0","246474.81","2","42.7075","-71.1664"],["VISTA","Lincoln","MA","2","0","31084.54","1","42.4242","-71.3085"],["STATE_NATIONAL","Lowell","MA","0","61331","0","1","42.6352","-71.2995"],["VISTA","Medford","MA","16","23000","248676.32","1","42.4181","-71.108"],["STATE_NATIONAL","Plainfield","MA","14","119750","0","1","42.5187","-72.923"],["VISTA","Quincy","MA","1","0","15542.27","1","42.2831","-71.0254"],["VISTA","Roxbury","MA","3","0","46626.81","2","42.3239","-71.0857"],["STATE_NATIONAL","Somerville","MA","236","780538","0","1","42.3996","-71.1219"],["VISTA","Worcester","MA","7","0","661713.08","2","42.2546","-71.8014"],["STATE_NATIONAL","Annapolis","MD","24","299431","0","1","38.9834","-76.5299"],["STATE_NATIONAL","Baltimore","MD","25","558866","0","5","39.2869","-76.6471"],["STATE_NATIONAL","Baltimore","MD","51","550224","0","1","39.3644","-76.6113"],["VISTA","Baltimore","MD","56","55000","870367.12","7","39.2939","-76.62"],["VISTA","Emmitsburg","MD","19","38400","295303.13","1","39.6989","-77.3287"],["STATE_NATIONAL","Frostburg","MD","143","59156","0","1","39.6524","-78.9335"],["VISTA","Frostburg","MD","5","17600","77711.35","1","39.6524","-78.9335"],["STATE_NATIONAL","Glen Burnie","MD","0","64611","0","1","39.1567","-76.6293"],["STATE_NATIONAL","Hughesville","MD","6","92183","0","1","38.5309","-76.7808"],["VISTA","Pasadena","MD","1","0","15542.27","1","39.1281","-76.5191"],["STATE_NATIONAL","Rockville","MD","62","693481","0","1","39.1317","-77.1471"],["STATE_NATIONAL","Salisbury","MD","8","72041","0","1","38.369","-75.6176"],["VISTA","Silver Spring","MD","2","0","31084.54","1","39.066","-76.9723"],["VISTA","Takoma Park","MD","2","0","31084.54","1","38.9831","-77.0015"],["STATE_NATIONAL","Takoma Park","MD","287","242528","0","1","38.9831","-77.0015"],["VISTA","Augusta","ME","23","30000","357472.21","1","44.3069","-69.7822"],["VISTA","Bangor","ME","1","0","15542.27","1","44.8197","-68.7992"],["STATE_NATIONAL","Portland","ME","24","127241","0","1","43.6594","-70.259"],["STATE_NATIONAL","Portland","ME","22","195804","0","1","43.6594","-70.259"],["VISTA","Ann Arbor","MI","30","16000","3415159.78","3","42.2358","-83.7299"],["VISTA","Beulah","MI","3","0","46626.81","1","44.6371","-86.0289"],["STATE_NATIONAL","Charlevoix","MI","0","15000","0","1","45.3032","-85.241"],["STATE_NATIONAL","Dearborn","MI","20","611333","0","1","42.3054","-83.1701"],["VISTA","Detroit","MI","12","0","186507.24","4","42.3079","-83.1146"],["STATE_NATIONAL","Detroit","MI","72","874395","0","3","42.348","-83.0785"],["STATE_NATIONAL","East Lansing","MI","20","293034","0","1","42.728","-84.4809"],["VISTA","Escanaba","MI","1","0","15542.27","1","45.7472","-87.084"],["VISTA","Flint","MI","5","0","77711.35","2","43.0135","-83.6905"],["VISTA","Grand Rapids","MI","16","0","248676.32","5","42.9274","-85.7025"],["STATE_NATIONAL","Grand Rapids","MI","26","355327","0","1","42.9639","-85.6591"],["VISTA","Hamtramck","MI","4","0","62169.08","1","42.4084","-83.057"],["VISTA","Holland","MI","38","0","7041306.81","1","42.7727","-86.1074"],["STATE_NATIONAL","Holland","MI","2","11801","0","1","42.7727","-86.1074"],["STATE_NATIONAL","Houghton","MI","9","108589","0","1","47.1136","-88.5673"],["VISTA","Kalamazoo","MI","3","0","46626.81","1","42.2685","-85.6093"],["VISTA","Laingsburg","MI","1","0","15542.27","1","42.8869","-84.3529"],["VISTA","Lansing","MI","50","61500","2067253.61","9","42.6787","-84.628"],["STATE_NATIONAL","Lansing","MI","154","757766","0","4","42.6787","-84.628"],["VISTA","Pontiac","MI","10","10000","339728.43","1","42.6095","-83.3399"],["VISTA","Port Huron","MI","7","0","108795.89","1","42.9795","-82.4465"],["VISTA","Powers","MI","1","0","15542.27","1","45.6909","-87.5142"],["STATE_NATIONAL","Southgate","MI","12","143878","0","1","42.2038","-83.2047"],["STATE_NATIONAL","Duluth","MN","14","137548","0","1","46.7809","-92.0981"],["VISTA","Maplewood","MN","4","33000","62169.08","2","44.9515","-93.0204"],["STATE_NATIONAL","Maplewood","MN","8","104800","0","1","44.9515","-93.0067"],["STATE_NATIONAL","Minneapolis","MN","17","222667","0","2","44.9817","-93.2478"],["VISTA","Minneapolis","MN","56","53000","870367.12","6","44.9628","-93.2982"],["STATE_NATIONAL","Owatonna","MN","9","104803","0","1","44.0801","-93.2261"],["VISTA","Slayton","MN","5","0","262017.08","1","43.9928","-95.7566"],["VISTA","St Paul","MN","8","0","124338.16","2","44.9491","-93.1775"],["STATE_NATIONAL","St. Cloud","MN","23","275102","0","1","45.5325","-94.1818"],["VISTA","St. Paul","MN","6","0","93253.62","3","44.9491","-93.1589"],["STATE_NATIONAL","St. Paul","MN","48","559401","0","4","44.9395","-93.198"],["VISTA","Winona","MN","1","0","15542.27","1","44.044","-91.6491"],["VISTA","Columbia","MO","18","0","279760.86","4","38.927","-92.3692"],["STATE_NATIONAL","Eldon","MO","4","52397","0","1","38.3373","-92.5826"],["VISTA","Grandview","MO","3","0","46626.81","1","38.8811","-94.5242"],["STATE_NATIONAL","Kansas City","MO","21","149672","0","2","39.0431","-94.5824"],["VISTA","Kansas City","MO","3","0","46626.81","2","39.0851","-94.5824"],["STATE_NATIONAL","Kirksville","MO","15","30000","0","1","40.1881","-92.5864"],["STATE_NATIONAL","Purdy","MO","2","12871","0","1","36.8168","-93.9189"],["STATE_NATIONAL","St. Joseph","MO","4","26200","0","1","39.7389","-94.8206"],["VISTA","St. Louis","MO","16","0","248676.32","5","38.6125","-90.2612"],["STATE_NATIONAL","St. Louis","MO","47","770214","0","3","38.6125","-90.2167"],["STATE_NATIONAL","Waynesville","MO","12","157206","0","1","37.8121","-92.234"],["VISTA","Waynesville","MO","50","0","7227814.05","1","37.8121","-92.234"],["STATE_NATIONAL","Bay St. Louis","MS","0","76000","0","1","30.3034","-89.4002"],["STATE_NATIONAL","Biloxi","MS","0","118383","0","1","33.79","-84.4412"],["VISTA","Cleveland","MS","13","244524","202049.51","1","33.7441","-90.7254"],["STATE_NATIONAL","Grenada","MS","0","90406","0","1","33.7731","-89.8013"],["STATE_NATIONAL","Gulfport","MS","0","78756","0","1","30.4651","-89.1067"],["VISTA","Hattiesburg","MS","6","0","93253.62","1","31.3291","-89.3355"],["STATE_NATIONAL","Hattiesburg","MS","20","248528","0","1","31.3071","-89.3045"],["VISTA","Jackson","MS","38","0","590606.26","4","32.2958","-90.2113"],["STATE_NATIONAL","Jackson","MS","0","65625","0","1","32.3133","-90.1771"],["VISTA","Meridian","MS","2","0","31084.54","1","32.3341","-88.6568"],["STATE_NATIONAL","Piney Woods","MS","0","52000","0","1","32.063","-89.993"],["VISTA","Billings","MT","7","17525","108795.89","1","45.7715","-108.4992"],["STATE_NATIONAL","Bozeman","MT","82","501599","0","1","45.6812","-111.0186"],["VISTA","Great Falls","MT","8","0","861561.08","2","47.5092","-111.2794"],["VISTA","Helena","MT","24","325238","373014.48","2","46.592","-112.0341"],["VISTA","Missoula","MT","12","148311","186507.24","1","46.8615","-113.9815"],["STATE_NATIONAL","Missoula","MT","47","196333","0","1","46.8615","-113.9815"],["VISTA","Sidney","MT","10","7200","155422.7","1","47.7099","-104.1607"],["VISTA","Asheville","NC","10","10000","155422.7","1","35.594","-82.5552"],["VISTA","Charlotte","NC","3","0","46626.81","1","35.2536","-80.8225"],["VISTA","Elizabeth City","NC","2","0","31084.54","1","36.2903","-76.2368"],["VISTA","Elon","NC","21","25500","326387.67","1","36.1978","-79.5026"],["VISTA","Greensboro","NC","17","18131","264218.59","1","36.1111","-79.7576"],["STATE_NATIONAL","Greensboro","NC","36","297271","0","2","36.0726","-79.7826"],["STATE_NATIONAL","Greenville","NC","50","410816","0","1","35.5779","-77.3399"],["STATE_NATIONAL","Hendersonville","NC","13","183300","0","1","35.3175","-82.4638"],["VISTA","Raleigh","NC","17","22000","1185747.24","1","35.7751","-78.6349"],["VISTA","Winston-Salem","NC","13","20000","202049.51","1","36.1013","-80.2302"],["STATE_NATIONAL","Hastings","NE","6","22400","0","1","40.5908","-98.3915"],["STATE_NATIONAL","Kearney","NE","0","7415","0","1","40.7104","-99.1125"],["VISTA","Lincoln","NE","9","0","139880.43","2","40.8197","-96.7035"],["STATE_NATIONAL","Lincoln","NE","26","288184","0","2","40.7906","-96.7108"],["STATE_NATIONAL","Macy","NE","0","58829","0","1","42.1178","-96.359"],["VISTA","Omaha","NE","2","0","31084.54","1","41.2396","-95.9337"],["STATE_NATIONAL","Omaha","NE","3","95346","0","2","41.2548","-95.9951"],["STATE_NATIONAL","Allenstown","NH","0","442322","0","1","43.1469","-71.444"],["STATE_NATIONAL","Concord","NH","11","140476","0","2","43.2087","-71.5339"],["VISTA","Concord","NH","5","5000","77711.35","1","43.2092","-71.5339"],["STATE_NATIONAL","Concord","NH","20","262000","0","1","43.2092","-71.5339"],["VISTA","Manchester","NH","5","5000","77711.35","1","43.0048","-71.447"],["STATE_NATIONAL","Stratham","NH","0","129000","0","1","43.0128","-70.9073"],["STATE_NATIONAL","Edison","NJ","15","91700","0","1","40.5343","-74.3391"],["VISTA","Elizabeth","NJ","4","0","62169.08","1","40.6528","-74.1912"],["STATE_NATIONAL","Elizabeth","NJ","8","83020","0","1","40.6703","-74.2018"],["STATE_NATIONAL","Ewing","NJ","58","256408","0","2","40.2399","-74.782"],["STATE_NATIONAL","Jersey City","NJ","0","23727","0","1","40.7324","-74.0655"],["VISTA","Lakewood","NJ","1","0","15542.27","1","40.0798","-74.2093"],["STATE_NATIONAL","New Brunswick","NJ","23","198535","0","2","40.4887","-74.4485"],["STATE_NATIONAL","Newark","NJ","5","15000","0","1","40.734","-74.174"],["VISTA","Orange","NJ","3","0","46626.81","1","40.769","-74.2348"],["STATE_NATIONAL","Paterson","NJ","15","131000","0","1","40.9145","-74.1672"],["STATE_NATIONAL","Patterson","NJ","14","183400","0","1","40.9147","-74.1676"],["STATE_NATIONAL","Trenton","NJ","9","44914","0","1","40.2199","-74.7617"],["VISTA","Albuqueque","NM","1","166572","15542.27","1","35.0845","-106.6483"],["STATE_NATIONAL","Albuquerque","NM","15","230218","0","2","35.0845","-106.6483"],["VISTA","Albuquerque","NM","33","40000","1803035.02","3","35.0725","-106.5757"],["STATE_NATIONAL","Alto","NM","17","15000","0","1","33.4075","-105.6493"],["STATE_NATIONAL","Gallup","NM","10","29888","0","1","35.5214","-108.7369"],["VISTA","Las Cruces","NM","19","0","295303.13","1","32.3032","-106.7609"],["STATE_NATIONAL","Las Cruces","NM","10","41000","0","2","32.3007","-106.7885"],["STATE_NATIONAL","Ranchos de Taos","NM","38","197031","0","1","36.3519","-105.6261"],["VISTA","Santa Fe","NM","22","165428","341929.94","1","35.6907","-105.9398"],["VISTA","Silver City","NM","2","0","31084.54","1","32.7804","-108.2776"],["VISTA","Carson City","NV","9","10000","139880.43","1","39.1685","-119.7651"],["VISTA","Las Vegas","NV","16","19000","248676.32","2","36.0962","-115.1422"],["STATE_NATIONAL","Las Vegas","NV","6","76702","0","1","36.0962","-115.1363"],["VISTA","Reno","NV","11","78310","170964.97","2","39.5005","-119.8216"],["STATE_NATIONAL","Reno","NV","44","251283","0","1","39.5461","-119.8208"],["VISTA","Winnemucca","NV","5","0","77711.35","1","40.9617","-117.7402"],["Jennings","Albany","NY","33","374088","0","1","42.6717","-73.7814"],["Jennings","Batavia","NY","12","56715","0","1","42.9993","-78.1875"],["Jennings","Bath","NY","2","15723","0","1","42.3442","-77.3275"],["Jennings","Bronx","NY","2","0","31084.54","1","40.8152","-73.9074"],["Jennings","Brooklyn","NY","9","0","139880.43","3","40.6244","-74.03"],["Jennings","Brooklyn","NY","38","286049","0","3","40.6712","-73.9916"],["Jennings","Buffalo","NY","68","73450","6586046.26","4","42.8452","-78.891"],["Jennings","Buffalo","NY","43","439955","0","1","42.897","-78.883"],["Jennings","Centereach","NY","2","0","31084.54","1","40.8692","-73.0812"],["Jennings","Cortland","NY","10","99944","0","1","42.594","-76.1892"],["Jennings","Endicott","NY","19","15000","2322666.16","1","42.1121","-76.0594"],["Jennings","Geneva","NY","17","325614","0","1","42.8627","-76.9885"],["Jennings","Ithaca","NY","1","0","15542.27","1","42.4486","-76.4918"],["Jennings","Little Valley","NY","0","45700","0","1","42.2496","-78.8062"],["Jennings","Loudonville","NY","20","0","2153902.7","1","42.7085","-73.7712"],["Jennings","Lyons","NY","12","305013","0","1","43.0723","-76.9924"],["Jennings","New Paltz","NY","31","449353","0","1","41.7452","-74.0902"],["Jennings","New York","NY","1429","2960245","0","3","40.7534","-73.9889"],["Jennings","New York","NY","296","283700","6996486.41","10","40.7047","-74.0126"],["Jennings","New York","NY","336","2617984","0","9","40.7091","-74.0054"],["Jennings","Oswego","NY","42","236965","0","1","43.4462","-76.4947"],["Jennings","Port Chester","NY","0","106205","0","1","41.009","-73.6715"],["Jennings","Poughkeepsie","NY","2","0","215390.27","1","41.6986","-73.9199"],["Jennings","Rensselaer","NY","20","3400","0","1","42.6354","-73.7238"],["Jennings","Rhinebeck","NY","0","32731","0","1","41.9275","-73.88"],["Jennings","Rochester","NY","67","411749","0","3","43.0867","-77.6277"],["Jennings","Rochester","NY","46","23650","4585364.75","4","43.129","-77.6421"],["Jennings","Syracuse","NY","7","10900","108795.89","1","43.0349","-76.1283"],["Jennings","Syracuse","NY","17","96682","0","1","43.0481","-76.1734"],["Jennings","Troy","NY","3","0","230932.54","1","42.7303","-73.6607"],["Jennings","Troy","NY","8","50400","0","1","42.7303","-73.6607"],["Jennings","West Seneca","NY","164","1182158","0","2","42.8372","-78.7496"],["Jennings","Whitney Point","NY","14","79564","0","1","42.3159","-75.9458"],["VISTA","Akron","OH","4","0","62169.08","1","41.0811","-81.5722"],["VISTA","Athens","OH","13","35000","202049.51","1","39.3169","-82.0996"],["STATE_NATIONAL","Cincinnati","OH","17","450513","0","2","39.1015","-84.5649"],["VISTA","Cincinnati","OH","3","0","46626.81","1","39.127","-84.5129"],["VISTA","Cleveland","OH","22","0","341929.94","7","41.4744","-81.7011"],["STATE_NATIONAL","Columbus","OH","13","236855","0","1","39.9644","-83.0026"],["VISTA","Columbus","OH","64","36238","994705.28","7","39.9584","-83.0026"],["STATE_NATIONAL","Dayton","OH","16","207813","0","1","39.7424","-84.2632"],["VISTA","Randolph","OH","2","0","31084.54","1","41.0329","-81.2482"],["STATE_NATIONAL","Ravenna","OH","33","303980","0","1","41.1586","-81.2368"],["VISTA","Ravenna","OH","6","0","93253.62","1","41.1586","-81.2368"],["STATE_NATIONAL","Toledo","OH","33","480449","0","2","41.654","-83.5392"],["VISTA","Wilmington","OH","7","34000","108795.89","1","39.4524","-83.8459"],["VISTA","Youngstown","OH","2","0","31084.54","1","41.1061","-80.6486"],["STATE_NATIONAL","Hugo","OK","0","56833","0","1","34.0124","-95.5111"],["STATE_NATIONAL","OKeene","OK","0","21800","0","1","36.1168","-98.3119"],["STATE_NATIONAL","Oklahoma City","OK","40","352500","0","1","35.4745","-97.5052"],["VISTA","Oklahoma City","OK","19","0","848220.32","3","35.3853","-97.5266"],["VISTA","Tulsa","OK","65","702359","5617890.8","1","36.1865","-95.9844"],["VISTA","Corvallis","OR","2","0","31084.54","1","44.545","-123.278"],["STATE_NATIONAL","Eugene","OR","5","88934","0","1","44.0397","-123.0628"],["VISTA","Portland","OR","49","50000","761571.23","4","45.5203","-122.6873"],["STATE_NATIONAL","Portland","OR","60","684141","0","2","45.4827","-122.6733"],["VISTA","Allison Park","PA","6","0","93253.62","1","40.574","-79.9652"],["STATE_NATIONAL","Butler","PA","6","99623","0","1","40.8798","-79.9156"],["VISTA","Duquesne","PA","6","0","277559.35","2","40.3716","-79.8525"],["STATE_NATIONAL","Ebensburg","PA","31","209103","0","1","40.5009","-78.7403"],["VISTA","Harrisburg","PA","40","50100","1543219.45","2","40.2616","-76.8907"],["VISTA","Holmes","PA","11","26650","170964.97","1","39.8995","-75.3095"],["STATE_NATIONAL","Knox","PA","106","902459","0","2","41.2185","-79.5472"],["VISTA","Lancaster","PA","18","26000","279760.86","2","40.0316","-76.3354"],["STATE_NATIONAL","Philadelphia","PA","23","281470","0","2","39.9506","-75.1654"],["STATE_NATIONAL","Philadelphia","PA","37","484870","0","2","39.9668","-76.8829"],["VISTA","Philadelphia","PA","59","22250","1469911.12","12","39.9506","-75.2243"],["STATE_NATIONAL","Pittsburgh","PA","29","435000","0","1","40.466","-79.9196"],["STATE_NATIONAL","Pittsburgh","PA","28","276827","0","1","40.4444","-79.997"],["STATE_NATIONAL","Selinsgrove","PA","5","101631","0","1","40.8229","-76.8537"],["STATE_NATIONAL","Slippery Rock","PA","134","549534","0","1","41.0473","-80.0566"],["STATE_NATIONAL","Williamsport","PA","10","168232","0","1","41.253","-77.0169"],["VISTA","Carolina","PR","7","10000","108795.89","1","18.4101","-65.9773"],["VISTA","Florida","PR","8","10000","124338.16","1","18.362","-66.5661"],["VISTA","Gurabo","PR","6","8000","93253.62","1","18.2528","-65.9742"],["VISTA","Mercedita","PR","10","10000","155422.7","1","18.0098","-66.5406"],["STATE_NATIONAL","Cranston","RI","9","101537","0","1","41.7722","-71.4659"],["VISTA","Pawtucket","RI","3","0","46626.81","1","41.8727","-71.3892"],["STATE_NATIONAL","Providence","RI","116","1149768","0","8","41.7896","-71.4133"],["VISTA","Providence","RI","35","39250","1834119.56","4","41.8015","-71.4252"],["VISTA","Warwick","RI","8","0","124338.16","1","41.7045","-71.4559"],["VISTA","Woonsocket","RI","19","0","2875583.35","1","42.0026","-71.5032"],["VISTA","Aiken","SC","11","1500","1645410.81","1","33.5731","-81.7159"],["STATE_NATIONAL","Anderson","SC","7","97588","0","1","34.5077","-82.6494"],["STATE_NATIONAL","Campobello","SC","40","206253","0","1","35.1169","-82.1358"],["VISTA","Columbia","SC","3","2000","46626.81","1","33.998","-81.033"],["VISTA","N. Charleston","SC","4","0","430780.54","1","32.9285","-80.0342"],["VISTA","North Charleston","SC","10","13500","155422.7","1","32.8601","-79.984"],["VISTA","Spartanburg","SC","24","13000","2953294.7","1","34.9503","-81.9284"],["STATE_NATIONAL","Pine Ridge","SD","0","76528","0","1","43.3265","-102.7362"],["VISTA","Chattanooga","TN","2","0","31084.54","1","35.0466","-85.3114"],["STATE_NATIONAL","Cookeville","TN","9","29833","0","1","36.1844","-85.5171"],["VISTA","Jackson","TN","22","5000","3843738.81","1","35.6844","-88.827"],["STATE_NATIONAL","Jackson","TN","1","42000","0","1","35.6844","-88.827"],["VISTA","Knoxville","TN","1","0","15542.27","1","35.9766","-83.9855"],["STATE_NATIONAL","Knoxville","TN","6","77384","0","1","35.9766","-83.9855"],["STATE_NATIONAL","Memphis","TN","10","333399","0","2","35.1349","-90.02"],["VISTA","Memphis","TN","14","0","1876343.35","3","35.1104","-90.0073"],["STATE_NATIONAL","Morristown","TN","15","179582","0","1","36.2065","-83.2874"],["VISTA","Morristown","TN","23","0","3859281.08","1","36.2065","-83.2874"],["VISTA","Nashville","TN","60","5000","7567542.48","5","36.1073","-86.8024"],["VISTA","Oak Ridge","TN","7","0","846018.81","1","36.0249","-84.2386"],["STATE_NATIONAL","Robbins","TN","3","37374","0","1","36.3508","-84.598"],["STATE_NATIONAL","Rutledge","TN","27","323917","0","1","36.2558","-83.5145"],["VISTA","Abilene","TX","2","0","31084.54","1","32.4647","-99.7681"],["VISTA","Arlington","TX","5","0","77711.35","1","32.7206","-97.0834"],["STATE_NATIONAL","Austin","TX","248","1633691","0","6","30.2684","-97.7467"],["VISTA","Austin","TX","81","125000","1258923.87","13","30.2314","-97.765"],["VISTA","Bastrop","TX","2","0","31084.54","1","30.1186","-97.3113"],["VISTA","Beaumont","TX","3","0","46626.81","2","29.9908","-94.1365"],["VISTA","Corpus Christi","TX","4","0","62169.08","1","27.7705","-97.3999"],["STATE_NATIONAL","Dallas","TX","121","903237","0","2","32.7463","-96.808"],["VISTA","Dallas","TX","96","0","12366095.99","5","32.6699","-96.9136"],["VISTA","Denton","TX","1","0","15542.27","1","33.2169","-97.1325"],["VISTA","El Paso","TX","4","0","62169.08","2","31.7593","-106.4805"],["STATE_NATIONAL","El Paso","TX","12","148560","0","2","31.7593","-106.4936"],["VISTA","Fort Worth","TX","10","0","155422.7","1","32.7784","-97.3011"],["VISTA","Houston","TX","19","0","295303.13","2","29.872","-95.5248"],["VISTA","Irving","TX","21","0","326387.67","1","32.8492","-96.9727"],["VISTA","Laredo","TX","1","0","15542.27","1","27.5143","-99.4995"],["VISTA","Lufkin","TX","2","0","31084.54","1","31.3091","-94.7423"],["VISTA","McAllen","TX","2","0","31084.54","1","26.2166","-98.2363"],["VISTA","Pharr","TX","15","60000","233134.05","1","26.1836","-98.1887"],["STATE_NATIONAL","San Antonio","TX","0","281790","0","1","29.4242","-98.5233"],["VISTA","San Antonio","TX","3","0","46626.81","2","29.4602","-98.57"],["VISTA","San Elizario","TX","16","0","248676.32","2","31.5761","-106.2557"],["VISTA","Seguin","TX","3","0","46626.81","1","29.5611","-97.967"],["VISTA","Taylor","TX","1","0","15542.27","1","30.5769","-97.412"],["VISTA","Van","TX","4","0","62169.08","1","32.5344","-95.6374"],["VISTA","Waco","TX","2","0","31084.54","1","31.516","-97.1997"],["STATE_NATIONAL","Waco","TX","0","49451","0","1","31.5523","-97.1381"],["VISTA","East Carbon","UT","3","5000","46626.81","1","39.5436","-110.4185"],["VISTA","Green River","UT","6","5000","93253.62","1","38.9955","-110.1616"],["STATE_NATIONAL","Logan","UT","52","244412","0","1","41.7408","-111.8103"],["VISTA","Logan","UT","5","64100","77711.35","1","41.7408","-111.8103"],["STATE_NATIONAL","Moab","UT","8","23916","0","1","38.5509","-109.5029"],["STATE_NATIONAL","Ogden","UT","68","473820","0","1","41.2166","-111.9947"],["VISTA","Ogden","UT","5","0","77711.35","2","41.2166","-111.9947"],["VISTA","Price","UT","6","0","93253.62","2","39.5905","-110.8051"],["VISTA","Provo","UT","13","68560","939272.43","2","40.2323","-111.6774"],["STATE_NATIONAL","Salt Lake City","UT","26","169400","0","2","40.7268","-111.9406"],["VISTA","Salt Lake City","UT","20","20000","310845.4","6","40.6633","-111.9216"],["VISTA","St. George","UT","5","0","77711.35","1","37.1114","-113.5833"],["VISTA","Arlington","VA","3","0","46626.81","1","38.8937","-77.0744"],["STATE_NATIONAL","Big Stone Gap","VA","2","113708","0","1","36.8668","-82.7645"],["STATE_NATIONAL","Charlottesville","VA","0","132800","0","1","38.0347","-78.5151"],["VISTA","Charlottesville","VA","12","0","186507.24","2","38.0311","-78.5262"],["VISTA","Christiansburg","VA","13","0","1676495.35","1","37.1329","-80.4185"],["VISTA","Fairfax","VA","1","0","15542.27","1","38.8492","-77.3329"],["VISTA","Fredericksburg","VA","5","0","77711.35","1","38.3003","-77.4772"],["VISTA","Hampton","VA","30","37500","466268.1","2","37.0396","-76.4072"],["STATE_NATIONAL","Hillsville","VA","14","91700","0","1","36.7617","-80.7222"],["STATE_NATIONAL","Petersburg","VA","28","109000","0","1","37.2164","-77.4426"],["VISTA","Radford","VA","4","0","62169.08","1","37.1339","-80.5753"],["STATE_NATIONAL","Richmond","VA","11","78600","0","1","37.5467","-77.392"],["VISTA","Williamsburg","VA","3","0","46626.81","1","37.2756","-76.7078"],["STATE_NATIONAL","Barre","VT","0","80000","0","1","44.1938","-72.4982"],["VISTA","Burlington","VT","10","10000","155422.7","1","44.4756","-73.2107"],["STATE_NATIONAL","Lyndonville","VT","0","60000","0","1","44.5382","-72.0093"],["STATE_NATIONAL","Montpelier","VT","11","133694","0","1","44.2636","-72.5802"],["Castillo","Bellingham","WA","8","32236","124338.16","2","48.748","-122.4894"],["Castillo","Colville","WA","4","4000","62169.08","1","48.5543","-117.8781"],["Castillo","Everett","WA","1","0","15542.27","1","47.9242","-122.2408"],["Castillo","Everett","WA","15","259300","0","1","47.8986","-122.2498"],["Castillo","Federal Way","WA","6","0","93253.62","1","47.3165","-122.3144"],["Castillo","Lacey","WA","191","2501544","0","3","47.0258","-122.8052"],["Castillo","Longview","WA","16","222700","0","1","46.1546","-122.9747"],["Castillo","Moses Lake","WA","5","0","77711.35","1","47.1348","-119.2935"],["Castillo","Mount Vernon","WA","2","2000","31084.54","1","48.4212","-122.3377"],["Castillo","Olympia","WA","43","600000","668317.61","1","47.0408","-122.896"],["Castillo","Pasco","WA","15","2550","0","1","46.2594","-119.1345"],["Castillo","Port Angeles","WA","16","196005","0","1","48.0995","-123.3873"],["Castillo","Seattle","WA","0","68487","0","1","47.6708","-122.3455"],["Castillo","Seattle","WA","18","11000","279760.86","4","47.5478","-122.3464"],["Castillo","Spokane","WA","36","211757","0","1","47.6121","-117.3606"],["Castillo","Spokane","WA","17","12000","264218.59","4","47.6559","-117.4322"],["VISTA","Beloit","WI","5","0","630628.54","1","42.529","-89.0476"],["VISTA","Eau Claire","WI","1","0","15542.27","1","44.7792","-91.4789"],["VISTA","Green Bay","WI","1","0","15542.27","1","44.5323","-88.0498"],["STATE_NATIONAL","Independence","WI","2","31499","0","1","44.4107","-91.4779"],["VISTA","La Crosse","WI","1","0","15542.27","1","43.813","-91.2498"],["VISTA","Lac du Flambeau","WI","8","0","861561.08","1","45.9692","-89.8946"],["STATE_NATIONAL","Ladysmith","WI","2","31704","0","1","45.4698","-91.1023"],["STATE_NATIONAL","Madison","WI","39","508276","0","6","43.0361","-89.3933"],["VISTA","Madison","WI","49","281909","3894768.64","5","43.0493","-89.4078"],["STATE_NATIONAL","Marshfield","WI","20","348918","0","1","44.6578","-90.1769"],["VISTA","Menasha","WI","6","0","461865.08","2","44.2163","-88.4203"],["VISTA","Milwaukee","WI","12","0","186507.24","4","43.0401","-87.9628"],["STATE_NATIONAL","Milwaukee","WI","91","762236","0","5","43.0175","-87.9761"],["STATE_NATIONAL","Milwaukee","WI","136","2105798","0","2","43.0461","-87.9"],["STATE_NATIONAL","Oshkosh","WI","18","64000","0","1","44.039","-88.5382"],["STATE_NATIONAL","Sheboygan","WI","4","52400","0","1","43.7358","-87.7287"],["VISTA","St. Croix Falls","WI","1","0","15542.27","1","45.4603","-92.6368"],["STATE_NATIONAL","Wausau","WI","19","122592","0","1","44.973","-89.5997"],["VISTA","Beckley","WV","62","37500","7045709.83","2","37.7904","-81.2002"],["VISTA","Charleston","WV","23","169056","2753446.7","2","38.3728","-81.6684"],["STATE_NATIONAL","Charleston","WV","10","148998","0","1","38.3496","-81.6319"],["VISTA","Dunmore","WV","13","11000","202049.51","1","38.3261","-79.8984"],["VISTA","Morgantown","WV","2","3000","31084.54","1","39.6492","-79.956"],["STATE_NATIONAL","Morgantown","WV","63","174616","0","1","39.6492","-79.956"],["VISTA","West Union","WV","6","3000","830476.54","1","39.2956","-80.7695"],["VISTA","Wheeling","WV","6","6000","461865.08","1","40.0698","-80.6919"],["VISTA","Casper","WY","9","21000","139880.43","3","42.8449","-106.3238"],["VISTA","Cheyenne","WY","15","0","970356.97","5","41.1081","-104.8016"],["STATE_NATIONAL","Laramie","WY","0","38613","0","3","41.2964","-105.6067"],["VISTA","Rock Springs","WY","3","0","46626.81","1","41.5932","-109.234"],["STATE_NATIONAL","Sheridan","WY","0","12871","0","1","44.7888","-106.9612"],["VISTA","Worland","WY","9","0","1430020.54","1","44.0172","-107.9607"]]</value>
+                </ex-property>
+            </list-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">"Verdana"</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="NoPadding" id="368">
+            <property name="paddingLeft">0pt</property>
+            <property name="paddingRight">0pt</property>
+        </style>
+    </styles>
+    <themes>
+        <report-item-theme type="Chart" name="Blues" id="370">
+            <xml-property name="customValues"><![CDATA[<type>1</type><ActuateChart version="2.5.3">
+ <ChartWithAxes version="2.5.3" type="Pie Chart" subType="Standard" unitSpacing="50.0">
+  <description value="">
+   <font>
+    <alignment/>
+   </font>
+  </description>
+  <block>
+   <children _type="TitleBlock" visible="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend" orientation="0" position="1" itemType="1">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <triggers condition="2">
+     <action type="2">
+      <value _type="SeriesValue" name=""/>
+     </action>
+    </triggers>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <bounds _body="0.0,0.0,212.0,130.0"/>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+   <background _type="Gradient">
+    <startColor _body=",255,165,191,221"/>
+    <endColor _body=",255,255,255,255"/>
+   </background>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="theme.withoutaxes" value="&amp;lt;ChartWithoutAxes coverage=&amp;quot;0.6&amp;quot;/&amp;gt;&amp;#10;"/>
+  <extendedProperties name="jschart.client.script" value="beforeGeneration: function(options)&amp;#13;&amp;#10;{&amp;#13;&amp;#10;    options.plotOptions = {&amp;#13;&amp;#10;                                                series : {&amp;#13;&amp;#10;                                                            animation:{duration:3000}&amp;#13;&amp;#10;                                                }&amp;#13;&amp;#10;            };   &amp;#13;&amp;#10;            options.colors = $.map(options.colors, function(color) {&amp;#13;&amp;#10;                        return {&amp;#13;&amp;#10;                                    linearGradient: [165,165,0,0],&amp;#13;&amp;#10;                                    stops: [&amp;#13;&amp;#10;                                                [0, color],&amp;#13;&amp;#10;                                                [1, actuate.report.HTML5Chart.Highcharts.Color(color).brighten(-0.5).get(&amp;#039;rgb&amp;#039;)] // darken&amp;#13;&amp;#10;                                    ]&amp;#13;&amp;#10;                        };&amp;#13;&amp;#10;            });&amp;#13;&amp;#10;&amp;#13;&amp;#10;},"/>
+  <emptyMessage>
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <axes>
+   <title>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </title>
+   <associatedAxes primaryAxis="true">
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,153,204,255"/>
+      <entries _body=",255,0,204,255"/>
+      <entries _body=",255,43,149,255"/>
+      <entries _body=",255,0,116,232"/>
+      <entries _body=",255,51,51,153"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+     </seriesPalette>
+     <series _type="PieSeries" seriesIdentifier="Series 1" leaderLineLength="1.0">
+      <label>
+       <caption>
+        <font size="8.0"/>
+       </caption>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&amp;quot;IntDollars&amp;quot;]">
+       <grouping/>
+      </dataDefinition>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <triggers condition="2">
+       <action type="3">
+        <value _type="ScriptValue" script="repDrill(categoryData);"/>
+       </action>
+      </triggers>
+      <title>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </title>
+      <leaderLineAttributes visible="true"/>
+     </series>
+     <series _type="BarSeries" seriesIdentifier="" riser="0">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+     </series>
+     <series _type="LineSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+      <markers>
+       <outline/>
+      </markers>
+      <lineAttributes>
+       <color _nil="1"/>
+      </lineAttributes>
+     </series>
+     <series _type="AreaSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+      <markers>
+       <outline/>
+      </markers>
+      <lineAttributes>
+       <color _nil="1"/>
+      </lineAttributes>
+     </series>
+     <series _type="DialSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <dial>
+       <lineAttributes>
+        <color _nil="1"/>
+       </lineAttributes>
+       <majorGrid>
+        <lineAttributes>
+         <color _nil="1"/>
+        </lineAttributes>
+        <tickAttributes>
+         <color _nil="1"/>
+        </tickAttributes>
+       </majorGrid>
+       <minorGrid>
+        <lineAttributes>
+         <color _nil="1"/>
+        </lineAttributes>
+        <tickAttributes>
+         <color _nil="1"/>
+        </tickAttributes>
+       </minorGrid>
+       <label>
+        <background _nil="1"/>
+        <outline>
+         <color _nil="1"/>
+        </outline>
+       </label>
+      </dial>
+      <needle>
+       <lineAttributes>
+        <color _nil="1"/>
+       </lineAttributes>
+      </needle>
+     </series>
+     <series _type="ScatterSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+      <markers>
+       <outline/>
+      </markers>
+      <lineAttributes>
+       <color _nil="1"/>
+      </lineAttributes>
+     </series>
+     <series _type="StockSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+     </series>
+     <series _type="BubbleSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+      <markers>
+       <outline/>
+      </markers>
+      <lineAttributes>
+       <color _nil="1"/>
+      </lineAttributes>
+      <accLineAttributes>
+       <color _nil="1"/>
+      </accLineAttributes>
+     </series>
+     <series _type="DifferenceSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <markers>
+       <outline/>
+      </markers>
+      <lineAttributes>
+       <color _nil="1"/>
+      </lineAttributes>
+      <negativeMarkers>
+       <outline/>
+      </negativeMarkers>
+      <negativeLineAttributes>
+       <color _nil="1"/>
+      </negativeLineAttributes>
+     </series>
+     <series _type="GanttSeries" seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+      <connectionLine>
+       <color _nil="1"/>
+      </connectionLine>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+      <decorationLabel>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </decorationLabel>
+     </series>
+     <series _type="RadarSeries" seriesIdentifier="">
+      <label>
+       <caption>
+        <font>
+         <alignment/>
+        </font>
+       </caption>
+       <outline/>
+       <insets/>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <marker>
+       <outline/>
+      </marker>
+      <lineAttributes/>
+      <webLineAttributes/>
+      <webLabel>
+       <caption>
+        <font>
+         <alignment/>
+        </font>
+       </caption>
+       <outline/>
+       <insets/>
+      </webLabel>
+      <catLabel>
+       <caption>
+        <font>
+         <alignment/>
+        </font>
+       </caption>
+       <outline/>
+       <insets/>
+      </catLabel>
+     </series>
+     <grouping _nil="1"/>
+    </seriesDefinitions>
+    <lineAttributes>
+     <color _body=",255,0,0,0"/>
+    </lineAttributes>
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <majorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </majorGrid>
+    <minorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </minorGrid>
+    <origin>
+     <value _nil="1"/>
+    </origin>
+   </associatedAxes>
+   <ancillaryAxes>
+    <title>
+     <caption value="Z-Axis Title"/>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,80,166,218"/>
+      <entries _body=",255,242,88,106"/>
+      <entries _body=",255,232,172,57"/>
+      <entries _body=",255,128,255,128"/>
+      <entries _body=",255,64,128,128"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+     </seriesPalette>
+     <series seriesIdentifier="">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <curveFitting _nil="1"/>
+     </series>
+    </seriesDefinitions>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <label>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <majorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </majorGrid>
+    <minorGrid>
+     <lineAttributes>
+      <color _nil="1"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </minorGrid>
+    <origin>
+     <value _type="NumberDataElement" value="0.0"/>
+    </origin>
+   </ancillaryAxes>
+   <seriesDefinitions>
+    <query definition=""/>
+    <seriesPalette>
+     <entries _body=",255,153,204,255"/>
+     <entries _body=",255,0,204,255"/>
+     <entries _body=",255,43,149,255"/>
+     <entries _body=",255,0,116,232"/>
+     <entries _body=",255,51,51,153"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,170,85,85"/>
+     <entries _body=",255,128,128,0"/>
+     <entries _body=",255,192,192,192"/>
+     <entries _body=",255,255,255,128"/>
+     <entries _body=",255,128,192,128"/>
+     <entries _body=",255,7,146,94"/>
+     <entries _body=",255,0,128,255"/>
+     <entries _body=",255,255,128,192"/>
+     <entries _body=",255,0,255,255"/>
+     <entries _body=",255,255,128,128"/>
+     <entries _body=",255,0,128,192"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,255,0,255"/>
+     <entries _body=",255,128,64,64"/>
+     <entries _body=",255,255,128,64"/>
+     <entries _body=",255,80,240,120"/>
+     <entries _body=",255,0,64,128"/>
+     <entries _body=",255,128,0,64"/>
+     <entries _body=",255,255,0,128"/>
+     <entries _body=",255,128,128,64"/>
+     <entries _body=",255,128,128,128"/>
+     <entries _body=",255,255,128,255"/>
+     <entries _body=",255,0,64,0"/>
+     <entries _body=",255,0,0,0"/>
+     <entries _body=",255,255,255,255"/>
+     <entries _body=",255,255,128,0"/>
+    </seriesPalette>
+    <seriesDefinitions>
+     <query definition=""/>
+     <seriesPalette>
+      <entries _body=",255,153,204,255"/>
+      <entries _body=",255,0,204,255"/>
+      <entries _body=",255,43,149,255"/>
+      <entries _body=",255,0,116,232"/>
+      <entries _body=",255,51,51,153"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+     </seriesPalette>
+     <series _type="PieSeries" seriesIdentifier="Series 1" leaderLineLength="1.0">
+      <label>
+       <caption>
+        <font size="8.0"/>
+       </caption>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&amp;quot;IntDollars&amp;quot;]">
+       <grouping/>
+      </dataDefinition>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <triggers condition="2">
+       <action type="3">
+        <value _type="ScriptValue" script="repDrill(categoryData);"/>
+       </action>
+      </triggers>
+      <title>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </title>
+      <leaderLineAttributes visible="true"/>
+     </series>
+     <series _type="PieSeries" seriesIdentifier="Series 1" leaderLineLength="1.0">
+      <label>
+       <caption>
+        <font size="8.0"/>
+       </caption>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&amp;quot;IntDollars&amp;quot;]">
+       <grouping/>
+      </dataDefinition>
+      <dataPoint separator=", ">
+       <components type="1"/>
+      </dataPoint>
+      <dataSets>
+       <value _type="NumberDataSet" values="[6.0, 4.0, 12.0, 8.0, 10.0]"/>
+      </dataSets>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <triggers condition="2">
+       <action type="3">
+        <value _type="ScriptValue" script="repDrill(categoryData);"/>
+       </action>
+      </triggers>
+      <title>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </title>
+      <leaderLineAttributes visible="true"/>
+     </series>
+     <grouping/>
+    </seriesDefinitions>
+    <series seriesIdentifier="">
+     <label>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </label>
+     <dataDefinition definition="row[&amp;quot;RECOVERY_ID&amp;quot;]"/>
+     <dataPoint separator=", ">
+      <components type="1"/>
+     </dataPoint>
+     <curveFitting _nil="1"/>
+    </series>
+    <grouping _nil="1"/>
+   </seriesDefinitions>
+   <lineAttributes>
+    <color _body=",255,0,0,0"/>
+   </lineAttributes>
+   <label>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </label>
+   <majorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </majorGrid>
+   <minorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </minorGrid>
+   <origin>
+    <value _nil="1"/>
+   </origin>
+  </axes>
+  <rotation>
+   <angles/>
+  </rotation>
+ </ChartWithAxes>
+</ActuateChart>]]></xml-property>
+        </report-item-theme>
+    </themes>
+    <page-setup>
+        <simple-master-page name="Landscape" id="372" extends="SampleApplication.Landscape">
+            <overridden-values>
+                <ref-entry baseId="318" name="NewGrid" id="373"/>
+                <ref-entry baseId="339" id="339"/>
+                <ref-entry baseId="341" id="341"/>
+                <ref-entry baseId="712" id="712"/>
+                <ref-entry baseId="321" id="713"/>
+                <ref-entry baseId="338" id="338"/>
+                <ref-entry baseId="333" name="NewImage" id="333"/>
+                <ref-entry baseId="340" id="340"/>
+                <ref-entry baseId="716" name="NewText" id="716"/>
+                <ref-entry baseId="710" id="710"/>
+                <ref-entry baseId="713" name="NewText3" id="717"/>
+                <ref-entry baseId="342" name="NewGrid1" id="342"/>
+                <ref-entry baseId="343" id="343"/>
+                <ref-entry baseId="344" id="344"/>
+                <ref-entry baseId="345" id="345"/>
+                <ref-entry baseId="346" name="NewImage1" id="346"/>
+                <ref-entry baseId="352" name="NewImage11" id="352"/>
+                <ref-entry baseId="354" name="NewImage111" id="354"/>
+                <ref-entry baseId="355" name="NewImage13" id="355"/>
+            </overridden-values>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text id="234">
+            <list-property name="visibility">
+                <structure>
+                    <property name="format">all</property>
+                    <expression name="valueExpr" type="javascript">params["pBackLink"].value == false</expression>
+                </structure>
+            </list-property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<span style="color:blue; font-weight:bold; cursor:pointer; border:1px solid #ffffff" onmouseover="doMouseOver(this)" onmouseout="doMouseOut(this)" onclick="loadDashboardViewer()">&amp;lt;&amp;lt;Go back</span>
+
+<script>
+function doMouseOver(elem) {
+	elem.style.border = "1px solid blue";
+}
+
+function doMouseOut(elem) {
+	elem.style.border = "1px solid #ffffff";
+}
+</script>]]></text-property>
+        </text>
+        <grid id="2104">
+            <column id="2105">
+                <property name="width">0.84375in</property>
+            </column>
+            <column id="2106">
+                <property name="width">10.21875in</property>
+            </column>
+            <row id="2107">
+                <cell id="2108">
+                    <image id="2115">
+                        <property name="height">64px</property>
+                        <property name="width">64px</property>
+                        <property name="source">file</property>
+                        <expression name="uri" type="constant">img/earth - blue.png</expression>
+                    </image>
+                </cell>
+                <cell id="2109">
+                    <label id="2570">
+                        <property name="backgroundAttachment">scroll</property>
+                        <property name="backgroundPositionX">0%</property>
+                        <property name="backgroundPositionY">0%</property>
+                        <property name="backgroundRepeat">repeat</property>
+                        <property name="fontFamily">"Tahoma"</property>
+                        <property name="fontSize">24pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="fontStyle">normal</property>
+                        <property name="fontVariant">normal</property>
+                        <property name="color">#1C5985</property>
+                        <property name="textLineThrough">none</property>
+                        <property name="textOverline">none</property>
+                        <property name="textUnderline">none</property>
+                        <property name="borderBottomColor">black</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftColor">black</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightColor">black</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopColor">black</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="borderTopWidth">medium</property>
+                        <property name="marginTop">0pt</property>
+                        <property name="marginLeft">0pt</property>
+                        <property name="marginBottom">0pt</property>
+                        <property name="marginRight">0pt</property>
+                        <property name="paddingTop">1pt</property>
+                        <property name="paddingLeft">1pt</property>
+                        <property name="paddingBottom">1pt</property>
+                        <property name="paddingRight">1pt</property>
+                        <property name="letterSpacing">normal</property>
+                        <property name="lineHeight">normal</property>
+                        <property name="orphans">2</property>
+                        <property name="textTransform">none</property>
+                        <property name="whiteSpace">normal</property>
+                        <property name="widows">2</property>
+                        <property name="wordSpacing">normal</property>
+                        <property name="display">block</property>
+                        <property name="pageBreakAfter">auto</property>
+                        <property name="pageBreakBefore">auto</property>
+                        <property name="pageBreakInside">auto</property>
+                        <property name="showIfBlank">false</property>
+                        <property name="canShrink">false</property>
+                        <property name="overflow">hidden</property>
+                        <text-property name="text" key="Worldwide overview">Worlwide Overview</text-property>
+                    </label>
+                    <label id="2571">
+                        <property name="backgroundAttachment">scroll</property>
+                        <property name="backgroundPositionX">0%</property>
+                        <property name="backgroundPositionY">0%</property>
+                        <property name="backgroundRepeat">repeat</property>
+                        <property name="fontFamily">"Tahoma"</property>
+                        <property name="fontSize">16pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="fontStyle">normal</property>
+                        <property name="fontVariant">normal</property>
+                        <property name="color">#1C5985</property>
+                        <property name="textLineThrough">none</property>
+                        <property name="textOverline">none</property>
+                        <property name="textUnderline">none</property>
+                        <property name="borderBottomColor">black</property>
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderBottomWidth">medium</property>
+                        <property name="borderLeftColor">black</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderLeftWidth">medium</property>
+                        <property name="borderRightColor">black</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderRightWidth">medium</property>
+                        <property name="borderTopColor">black</property>
+                        <property name="borderTopStyle">none</property>
+                        <property name="borderTopWidth">medium</property>
+                        <property name="marginTop">0pt</property>
+                        <property name="marginLeft">0pt</property>
+                        <property name="marginBottom">0pt</property>
+                        <property name="marginRight">0pt</property>
+                        <property name="paddingTop">1pt</property>
+                        <property name="paddingLeft">1pt</property>
+                        <property name="paddingBottom">1pt</property>
+                        <property name="paddingRight">1pt</property>
+                        <property name="letterSpacing">normal</property>
+                        <property name="lineHeight">normal</property>
+                        <property name="orphans">2</property>
+                        <property name="textTransform">none</property>
+                        <property name="whiteSpace">normal</property>
+                        <property name="widows">2</property>
+                        <property name="wordSpacing">normal</property>
+                        <property name="display">block</property>
+                        <property name="pageBreakAfter">auto</property>
+                        <property name="pageBreakBefore">auto</property>
+                        <property name="pageBreakInside">auto</property>
+                        <property name="showIfBlank">false</property>
+                        <property name="canShrink">false</property>
+                        <property name="overflow">hidden</property>
+                        <text-property name="text" key="Top 5 Reps">>>Enterprise Sales Top 5 Reps</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+        <text name="BIRT Online Maps - 1 - Code1" id="328" extends="BIRT Online Maps.BIRT Online Maps - 1 - Code">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>
+function repDrill(rep) {
+	loadMapViewer(rep, false);
+}
+</script>]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 1 - Code" id="9" extends="BIRT Online Maps.BIRT Online Maps - 1 - Code">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>
+
+if (window["actuate"] === undefined)
+    window["actuate"] = {};
+if (actuate["birt"] === undefined)
+    actuate.birt = {};
+
+actuate.birt.maps = {
+    divName: "actuate-birt-map",    
+    addresses: [],
+    locations: [],
+    areas: [],
+
+    resetPinLetter: false,
+    pinLetters: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789",    
+
+    loadResourcesOptions: null,
+    loadResourcesOptionsCounter: 0,
+
+    addAddress: function(id, addressValue, info) {
+        if (!addressValue) {
+            var addressValueElem = _$("Address_" + id);
+            if (addressValueElem)
+                addressValue = addressValueElem.innerHTML; else
+                addressValue = id;
+        }
+
+        var address = new Object();
+        address.id = id;
+        address.value = addressValue;
+        address.infoHTML = info == null ? addressValue : info;
+        address.pin = this.createPinObject(id, this.addresses.length);
+
+        this.addresses.push(address);
+        return address;
+    },
+
+    addLocation: function(id, lat, lon, info) {
+        if (!lat) {
+            var latElem = _$("Lat_" + id);
+            if (latElem)
+                lat = latElem.innerHTML; else
+                return;
+        }
+
+        if (!lon) {
+            var lonElem = _$("Lon_" + id);
+            if (lonElem)
+                lon = lonElem.innerHTML; else
+                return;
+        }
+
+        var loc = new Object();
+        loc.id = id;
+        loc.lat = lat;
+        loc.lon = lon;
+        loc.infoHTML = info;
+        loc.pin = this.createPinObject(id, this.locations.length);
+
+        this.locations.push(loc);
+        return loc;
+
+    },
+
+    createPinObject: function(id, idx) {
+        var pin = {};
+        var pinElem = _$("Pin_" + id);
+        if (pinElem) {
+            if (this.resetPinLetter &amp;&amp; idx < this.pinLetters.length)
+                pinElem.innerHTML = this.pinLetters.substring(idx, idx + 1);
+            pin.letter = pinElem.innerText;
+            pin.letterColor = pinElem.style.color;
+            pin.pinColor = pinElem.style.backgroundColor;
+        }
+        return pin;
+    },
+
+    initArea: function(id, strokeColor, strokeWeight, strokeOpacity, fillColor, fillOpacity) {
+        var area = new Object();
+        area.id = id;
+        area.points = [];
+        area.strokeColor = strokeColor;
+        area.strokeWeight = strokeWeight;
+        area.strokeOpacity = strokeOpacity;
+        area.fillColor = fillColor;
+        area.fillOpacity = fillOpacity;
+        this.areas.push(area);
+        return area;
+    },
+
+    addPointToArea: function(lat, lon) {
+        this.areas[this.areas.length - 1].points.push({lat: lat, lon: lon});
+    },
+
+    createPinIconURL: function(item) {
+        if (item.iconURL &amp;&amp; item.iconURL != "") {
+            return item.iconURL;
+        } else if (item.googleIconURL &amp;&amp; item.googleIconURL != "") {
+            return "http://www.google.com/intl/en_us/mapfiles/ms/micons/" + item.googleIconURL;
+        } else if (item.pin) {
+            var letter = (item.pin.letter &amp;&amp; item.pin.letter != "" &amp;&amp; item.pin.letter != "&amp;nbsp;") ? item.pin.letter : "+";
+            var pinColor = this.getColorCode(item.pin.pinColor, "FD7567");
+            var letterColor = this.getColorCode(item.pin.letterColor, "000000");
+
+            return "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=" + letter + "|" + pinColor + "|" + letterColor;
+        } else {
+            return "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=+|FD7567|000000";
+        }
+    },
+    
+    createPinShadowURL: function(item) {
+    	return "http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
+    },
+
+    getColorCode: function(colorCode, defaultColorCode) {
+        if (colorCode == null)
+            return defaultColorCode;
+        colorCode = colorCode.replace(/\s+/g, "").toLowerCase();
+        if (colorCode == "")
+            return defaultColorCode;
+
+        if (colorCode.substring(0, 1) == "#")
+            return colorCode.substring(1);
+
+        if (colorCode.substring(0, 4) == "rgb(") {
+            colorCode = colorCode.substring(4, colorCode.length - 1);
+            var colors = colorCode.split(",");
+            return this.decToHex(colors[0]) + this.decToHex(colors[1]) + this.decToHex(colors[2]);
+        }
+
+        switch (colorCode) {
+            case "auto": return "000000";
+            case "aqua": return "00FFFF";
+            case "black": return "000000";
+            case "blue": return "0000FF";
+            case "fuchsia": return "FF00FF";
+            case "gray": return "808080";
+            case "green": return "008000";
+            case "lime": return "00FF00";
+            case "maroon": return "800000";
+            case "navy": return "000080";
+            case "olive": return "808000";
+            case "orange": return "FFA500";
+            case "purple": return "800080";
+            case "red": return "FF0000";
+            case "silver": return "C0C0C0";
+            case "teal": return "008080";
+            case "white": return "FFFFFF";
+            case "yellow": return "FFFF00";
+            default: return colorCode.length == 6 ? colorCode : defaultColorCode;
+        }
+    },
+    
+    decToHex: function(dec) {
+    	var hex = parseInt(dec).toString(16);
+    	if (hex.length == 1)
+    		hex = "0" + hex;
+    	return hex;
+    },
+
+    loadResources: function(resOpts) {
+    	// write something to the document first so that we have the screen rendered
+    	var dd = document.createElement("div");
+    	dd.innerHTML = " ";
+    	document.body.appendChild(dd);
+    	
+        this.loadResourcesOptions = resOpts;
+        var i;
+        var head = document.getElementsByTagName("head")[0];
+        if (this.loadResourcesOptions.scripts) {
+            for (i = 0; i < this.loadResourcesOptions.scripts.length; i++) {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = this.loadResourcesOptions.scripts[i];
+                head.appendChild(script);
+            }
+        }
+
+        if (this.loadResourcesOptions.styles) {
+            for (i = 0; i < this.loadResourcesOptions.styles.length; i++) {
+                var link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = this.loadResourcesOptions.styles[i];
+                head.appendChild(link);
+            }
+        }
+
+        if (this.loadResourcesOptions.callback) {
+            if (this.loadResourcesOptions.check) {
+                this.loadResourcesCheck();
+            } else {
+                this.loadResourcesOptions.callback();
+            }
+        }
+    },
+
+    loadResourcesCheck: function() {
+        if (window[this.loadResourcesOptions.check] === undefined) {
+            this.loadResourcesOptionsCounter++;
+            if (this.loadResourcesOptionsCounter < 20)
+                setTimeout(this.loadResourcesCheck.bind(this), 50);
+        } else {
+            this.loadResourcesOptions.callback();
+        }
+    }
+};
+
+actuate.birt.maps.google = {
+    map: null,
+    geoCoder: null,
+    maxLng: -1000,
+    maxLat: -1000,
+    minLng: 0,
+    minLat: 0,
+    retryAddresses: [],    
+    processedAddresses: 0,
+    geoCodingStart: 0,
+    geoCodingMaxZoomTime: 2000,
+    geoCodingMaxTime: 10000,
+    geoCodingRetryTime: 500,
+
+    start: function() {
+    	if (window["google"] === undefined || google["maps"] === undefined) {
+    		var autoloadJSON = "{modules:[{name:\"maps\",version:3,callback:\"actuate.birt.maps.google.createMap\",other_params:\"sensor=false\"}]}";
+            var scriptSrc = "http://www.google.com/jsapi?autoload=" + encodeURIComponent(autoloadJSON);
+	        actuate.birt.maps.loadResources({scripts: [scriptSrc]});
+	    } else {
+	    	actuate.birt.maps.google.loadMap.bind(actuate.birt.maps.google)();
+	    }
+    },
+
+    createMap: function() {
+        actuate.birt.maps.google.loadMap.bind(actuate.birt.maps.google)();
+    },
+
+    loadMap: function() {
+    	var mapOptions = {
+    		zoom: 4,
+    		center: new google.maps.LatLng(38, -92),
+    		scrollwheel: false,
+    		mapTypeId: google.maps.MapTypeId.ROADMAP,
+    		navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL, position: google.maps.ControlPosition.TOP_RIGHT}    		
+    	};
+        this.map = new google.maps.Map(document.getElementById(actuate.birt.maps.divName), mapOptions);
+
+        var i;
+        if (actuate.birt.maps.addresses != null &amp;&amp; actuate.birt.maps.addresses.length > 0) {
+    		this.geoCoder = new google.maps.Geocoder();
+    		this.geoCodingStart = new Date().getTime();
+            for (i = 0; i < actuate.birt.maps.addresses.length; i++) {
+                this.loadAddress(actuate.birt.maps.addresses[i]);
+            }
+        }
+
+        if (actuate.birt.maps.locations != null &amp;&amp; actuate.birt.maps.locations.length > 0) {
+            for (i = 0; i < actuate.birt.maps.locations.length; i++) {
+                this.loadLocation(actuate.birt.maps.locations[i]);
+            }
+        }
+
+        if (actuate.birt.maps.areas != null &amp;&amp; actuate.birt.maps.areas.length > 0) {
+            for (i = 0; i < actuate.birt.maps.areas.length; i++) {
+                this.loadArea(actuate.birt.maps.areas[i]);
+            }
+        }
+
+        this.finishLoading();
+    },
+
+    loadRetryAddresses: function() {
+    	var elapsed = new Date().getTime() - this.geoCodingStart;
+    	if (elapsed > this.geoCodingMaxZoomTime)
+    		this.finishLoading();
+    	if (elapsed > this.geoCodingMaxTime)
+    		return;    	
+    		
+        this.processedAddresses = this.processedAddresses - this.retryAddresses.length;
+        var tmpAddresses = this.retryAddresses;
+        this.retryAddresses = [];
+        for (var i = 0; i < tmpAddresses.length; i++) {
+            this.loadAddress(tmpAddresses[i]);
+        }
+    },
+
+    loadAddress: function(address) {
+		this.geoCoder.geocode({address: address.value}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				this.adjustMinMaxBoundaries(results[0].geometry.location);
+				this.createMarker(address, results[0].geometry.location);			
+			} else {
+				this.retryAddresses.push(address);
+			}
+
+            this.processedAddresses++;
+            if (this.processedAddresses >= actuate.birt.maps.addresses.length) {
+                if (this.retryAddresses.length > 0)
+                    setTimeout(function() {this.loadRetryAddresses()}.bind(this), this.geoCodingRetryTime);
+                else
+                    this.finishLoading();
+            }
+        }.bind(this));
+    },
+
+    loadLocation: function(loc) {
+        var point = new google.maps.LatLng(loc.lat, loc.lon);
+        this.adjustMinMaxBoundaries(point);
+        this.createMarker(loc, point);
+    },
+
+    loadArea: function(area) {
+        if (!area.points)
+            return;
+
+        var latLngPoints = [];
+        for (var i = 0; i < area.points.length; i++) {
+            latLngPoints.push(new google.maps.LatLng(area.points[i].lat, area.points[i].lon));
+        }
+
+		var polygonOptions = {
+			map: this.map,
+			paths: latLngPoints,
+			fillColor: area.fillColor,
+			fillOpacity: area.fillOpacity,
+			strokeColor: area.strokeColor,
+			strokeOpacity: area.strokeOpacity,
+			strokeWeight: area.strokeWeight
+		};
+        var polygon = new google.maps.Polygon(polygonOptions);
+        
+        var bounds = this.getPolygonBounds(polygon);
+        this.adjustMinMaxBoundaries(bounds.getNorthEast());
+        this.adjustMinMaxBoundaries(bounds.getSouthWest());
+    },
+
+    createMarker: function(item, point) {
+    	var title = item.value ? item.value : item.infoHTML &amp;&amp; item.infoHTML.length < 50 ? item.infoHTML : null;
+        var markerOptions = {
+        	map: this.map,
+        	position: point,
+        	icon: new google.maps.MarkerImage(actuate.birt.maps.createPinIconURL(item)),        	
+        	shadow: new google.maps.MarkerImage(actuate.birt.maps.createPinShadowURL(item), null, null, new google.maps.Point(13, 37)),
+        	title: title
+        };
+        
+        var marker = new google.maps.Marker(markerOptions);
+
+        if (item.infoHTML) {
+        	var contentElem = document.createElement("div");
+			contentElem.innerHTML = item.infoHTML;			
+			var infoWindow = new google.maps.InfoWindow({content: contentElem.firstChild});
+			google.maps.event.addListener(marker, 'click', function() {infoWindow.open(this.map, marker);}.bind(this));
+        }
+
+        return marker;
+    },
+    
+    getPolygonBounds: function(polygon) {
+        var bounds = new google.maps.LatLngBounds;
+        polygon.getPath().forEach(function(latLng){bounds.extend(latLng);});
+        return bounds;
+    },
+
+    adjustMinMaxBoundaries: function(point) {
+        if (this.maxLng == -1000) {
+            this.maxLng = point.lng();
+            this.minLng = point.lng();
+            this.maxLat = point.lat();
+            this.minLat = point.lat();
+            return;
+        }
+
+        if (point.lng() > this.maxLng)
+            this.maxLng = point.lng();
+
+        if (point.lng() < this.minLng)
+            this.minLng = point.lng();
+
+        if (point.lat() > this.maxLat)
+            this.maxLat = point.lat();
+
+        if (point.lat() < this.minLat)
+            this.minLat = point.lat();
+    },
+
+    finishLoading: function() {
+        if (this.maxLng == -1000)
+            return;
+
+        var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(this.minLat, this.minLng), new google.maps.LatLng(this.maxLat, this.maxLng));
+		google.maps.event.addListenerOnce(this.map, "bounds_changed", function(){
+				if (this.map.getZoom() > 15)
+					this.map.setZoom(15);
+			}.bind(this)
+		);        
+        this.map.fitBounds(bounds);
+    }
+};
+
+if (window["$A"] === undefined) {
+    window.$A = function (iterable) {
+        if (!iterable) return [];
+        if (iterable.toArray) return iterable.toArray();
+        var length = iterable.length || 0, results = new Array(length);
+        while (length--) results[length] = iterable[length];
+        return results;
+    }
+}
+
+if (!Function.prototype.bind) {
+    Function.prototype.bind = function() {
+        if (arguments.length < 2 &amp;&amp; typeof arguments[0] == "undefined") return this;
+        var __method = this, args = $A(arguments), object = args.shift();
+        return function() {
+            return __method.apply(object, args.concat($A(arguments)));
+        }
+    }
+}
+</script>
+<div id="_$_dummyDiv12345"></div>
+<script>
+var _$_id = "";
+if (this._viewer) {
+    _$_id = this._viewer.getId() + "_";
+} else if (window["actuate"] !== undefined) {
+	var v = actuate.getViewer("_$_dummyDiv12345");
+	if (v)
+		_$_id = v.getId() + "_";
+} else if (document.getElementsByClassName) {
+ 	if (document.getElementsByClassName("actuateViewerContainer").length == 1)
+        _$_id = actuate.getViewer(document.getElementsByClassName("actuateViewerContainer")[0]).getId() + "_";   	
+} else {
+   	var exp = RegExp("\\bactuateViewerContainer\\b");
+   	var items = document.body.getElementsByTagName('*');
+   	var cls;
+   	for (var i = 0; i < items.length; i++) {
+   		cls = items[i].getAttribute("class") || items[i].className;
+   		if (cls &amp;&amp; exp.test(cls)) {
+   			window._$_id = actuate.getViewer(items[i]).getId() + "_";
+   			break;
+		}
+	}
+}
+
+var _$ = function (name) {
+	return document.getElementById(_$_id + name);
+}
+</script>]]></text-property>
+        </text>
+        <grid id="317">
+            <column id="318">
+                <property name="textAlign">center</property>
+            </column>
+            <row id="320">
+                <property name="verticalAlign">middle</property>
+                <property name="height">1.8125in</property>
+                <cell id="321">
+                    <property name="colSpan">1</property>
+                    <property name="rowSpan">1</property>
+                    <property name="paddingRight">0pt</property>
+                    <text name="BIRT Online Maps - 1 - Container" id="10" extends="BIRT Online Maps.BIRT Online Maps - 1 - Container">
+                        <property name="contentType">html</property>
+                        <text-property name="content"><![CDATA[<div id="actuate-birt-map" style="width:100%;height:300px;text-align:center;">
+	Loading Map<br>Please Wait...
+</div>
+
+]]></text-property>
+                    </text>
+                </cell>
+            </row>
+            <row id="324">
+                <property name="textAlign">center</property>
+                <cell id="325">
+                    <property name="colSpan">1</property>
+                    <property name="rowSpan">1</property>
+                    <table name="Enterprise Sales" id="245">
+                        <list-property name="userProperties">
+                            <structure>
+                                <property name="name">__ac_group_collapse_level</property>
+                                <property name="type">string</property>
+                            </structure>
+                        </list-property>
+                        <property name="fontFamily">"Tahoma"</property>
+                        <property name="fontSize">8pt</property>
+                        <property name="color">#666666</property>
+                        <property name="width">10.21875in</property>
+                        <property name="dataSet">MapData</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">RECOVERY_ID</property>
+                                <text-property name="displayName">Sales Rep</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["RECOVERY_ID"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">CITY</property>
+                                <text-property name="displayName">CITY</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["CITY"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">STATE</property>
+                                <text-property name="displayName">STATE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["STATE"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VOLUNTEERS</property>
+                                <text-property name="displayName">VOLUNTEERS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VOLUNTEERS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">DOLLARS</property>
+                                <text-property name="displayName">DOLLARS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["DOLLARS"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">MEMBER_DOLLARS</property>
+                                <text-property name="displayName">MEMBER_DOLLARS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["MEMBER_DOLLARS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PROGRAMS</property>
+                                <text-property name="displayName">Initiatives</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["PROGRAMS"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LATITUDE</property>
+                                <text-property name="displayName">LATITUDE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LATITUDE"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LONGITUDE</property>
+                                <text-property name="displayName">LONGITUDE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LONGITUDE"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">Pin</property>
+                                <text-property name="displayName">Pin</text-property>
+                                <expression name="expression" type="javascript">""</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">Pin Color</property>
+                                <text-property name="displayName">Pin Color</text-property>
+                                <expression name="expression" type="javascript">var rep = row["RECOVERY_ID"];&#13;
+if (rep == "Jennings")&#13;
+	"00518B";&#13;
+else if (rep == "Hernandez")&#13;
+	"79C7FF";&#13;
+else if (rep == "Castillo")&#13;
+	"252BFF";&#13;
+else if (rep == "Bott")&#13;
+	"00B060";&#13;
+else&#13;
+	"00733F";</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">AvgSale</property>
+                                <text-property name="displayName">AvgSale</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["Avg Sale"]</expression>
+                                <property name="dataType">float</property>
+                            </structure>
+                            <structure>
+                                <property name="name">RepDollars</property>
+                                <text-property name="displayName">RepDollars</text-property>
+                                <property name="dataType">integer</property>
+                                <property name="aggregateFunction">SUM</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["DOLLARS"]</expression>
+                                    </structure>
+                                </list-property>
+                            </structure>
+                            <structure>
+                                <property name="name">AvgSaleAmt</property>
+                                <property name="dataType">float</property>
+                                <property name="aggregateFunction">AVE</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["AvgSale"]</expression>
+                                    </structure>
+                                </list-property>
+                            </structure>
+                            <structure>
+                                <property name="name">IntDollars</property>
+                                <expression name="expression" type="javascript">dataSetRow["IntDollars"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">DOLLARS_1</property>
+                                <text-property name="displayName">DOLLARS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["DOLLARS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">PROGRAMS_1</property>
+                                <text-property name="displayName">PROGRAMS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["PROGRAMS"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">SUM DOLLARS</property>
+                                <property name="dataType">float</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>gpeCITY</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">SUM</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["DOLLARS"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">Aggregation IntDollars</property>
+                                <property name="dataType">float</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>gpeCITY</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">SUM</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["IntDollars"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">AMOUNT BY SALES REP</property>
+                                <property name="dataType">float</property>
+                                <simple-property-list name="aggregateOn">
+                                    <value>gpeSALESREP</value>
+                                </simple-property-list>
+                                <property name="aggregateFunction">SUM</property>
+                                <list-property name="arguments">
+                                    <structure>
+                                        <property name="name">Expression</property>
+                                        <expression name="value" type="javascript">row["DOLLARS"]</expression>
+                                    </structure>
+                                </list-property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="pageBreakInterval">1000</property>
+                        <column id="306">
+                            <property name="display">block</property>
+                            <property name="width">0.7291666666666666in</property>
+                        </column>
+                        <column id="294">
+                            <property name="width">2.59375in</property>
+                        </column>
+                        <column id="295"/>
+                        <column id="296"/>
+                        <column id="298"/>
+                        <column id="311">
+                            <property name="width">1px</property>
+                        </column>
+                        <header>
+                            <row id="246">
+                                <property name="style">tableHeaderBlue</property>
+                                <property name="fontFamily">"Tahoma"</property>
+                                <property name="fontSize">12pt</property>
+                                <property name="verticalAlign">bottom</property>
+                                <property name="display">block</property>
+                                <cell id="303">
+                                    <label id="327">
+                                        <property name="textAlign">left</property>
+                                        <text-property name="text">Pin</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="247">
+                                    <label id="248">
+                                        <property name="textAlign">left</property>
+                                        <text-property name="text" key="Sales Rep">Sales Rep</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="249">
+                                    <label id="250">
+                                        <property name="textAlign">left</property>
+                                        <text-property name="text" key="CITY">City</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="251">
+                                    <label id="252">
+                                        <property name="textAlign">center</property>
+                                        <text-property name="text" key="STATE">State</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="255">
+                                    <label id="256">
+                                        <property name="textAlign">right</property>
+                                        <text-property name="text" key="Total Amount">Dollars</text-property>
+                                    </label>
+                                </cell>
+                                <cell id="308"/>
+                            </row>
+                        </header>
+                        <group id="2589">
+                            <property name="groupName">gpeSALESREP</property>
+                            <expression name="keyExpr" type="javascript">row["RECOVERY_ID"]</expression>
+                            <property name="hideDetail">false</property>
+                            <list-property name="sort">
+                                <structure>
+                                    <expression name="key" type="javascript">row["AMOUNT BY SALES REP"]</expression>
+                                    <property name="direction">desc</property>
+                                    <property name="strength">-1</property>
+                                </structure>
+                            </list-property>
+                        </group>
+                        <group id="2572">
+                            <property name="groupName">gpeCITY</property>
+                            <expression name="keyExpr" type="javascript">row["CITY"]</expression>
+                            <property name="hideDetail">false</property>
+                            <list-property name="sort">
+                                <structure>
+                                    <expression name="key" type="javascript">row["SUM DOLLARS"]</expression>
+                                    <property name="direction">desc</property>
+                                    <property name="strength">-1</property>
+                                </structure>
+                            </list-property>
+                            <header>
+                                <row id="2573">
+                                    <method name="onCreate"><![CDATA[myVar1=!myVar1;]]></method>
+                                    <property name="borderBottomColor">#EAEAEA</property>
+                                    <property name="borderBottomStyle">solid</property>
+                                    <property name="borderBottomWidth">thin</property>
+                                    <property name="borderLeftColor">#EAEAEA</property>
+                                    <property name="borderLeftStyle">solid</property>
+                                    <property name="borderLeftWidth">thin</property>
+                                    <property name="borderRightColor">#EAEAEA</property>
+                                    <property name="borderRightStyle">solid</property>
+                                    <property name="borderRightWidth">thin</property>
+                                    <property name="borderTopColor">#EAEAEA</property>
+                                    <property name="borderTopStyle">solid</property>
+                                    <property name="borderTopWidth">thin</property>
+                                    <list-property name="highlightRules">
+                                        <structure>
+                                            <property name="operator">is-false</property>
+                                            <property name="backgroundColor">#EFEFEF</property>
+                                            <expression name="testExpr" type="javascript">myVar1</expression>
+                                        </structure>
+                                    </list-property>
+                                    <cell id="2574">
+                                        <data id="307">
+                                            <property name="fontSize">10pt</property>
+                                            <property name="textAlign">left</property>
+                                            <expression name="bookmark" type="javascript">"Pin_" + row.__rownum</expression>
+                                            <method name="onRender"><![CDATA[this.getStyle().backgroundColor = "#" + this.getRowData().getColumnValue("Pin Color");]]></method>
+                                            <property name="resultSetColumn">Pin</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="2575">
+                                        <data id="267">
+                                            <property name="textAlign">left</property>
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">RECOVERY_ID</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="2576">
+                                        <data id="2587">
+                                            <property name="textAlign">left</property>
+                                            <property name="resultSetColumn">CITY</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="2577">
+                                        <data id="271">
+                                            <property name="textAlign">center</property>
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="resultSetColumn">STATE</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="2578">
+                                        <data id="2588">
+                                            <property name="backgroundAttachment">scroll</property>
+                                            <property name="backgroundPositionX">0%</property>
+                                            <property name="backgroundPositionY">0%</property>
+                                            <property name="backgroundRepeat">repeat</property>
+                                            <property name="fontFamily">"Tahoma"</property>
+                                            <property name="fontSize">10pt</property>
+                                            <property name="fontWeight">normal</property>
+                                            <property name="fontStyle">normal</property>
+                                            <property name="fontVariant">normal</property>
+                                            <property name="color">#666666</property>
+                                            <property name="textLineThrough">none</property>
+                                            <property name="textOverline">none</property>
+                                            <property name="textUnderline">none</property>
+                                            <property name="borderBottomColor">black</property>
+                                            <property name="borderBottomStyle">none</property>
+                                            <property name="borderBottomWidth">medium</property>
+                                            <property name="borderLeftColor">black</property>
+                                            <property name="borderLeftStyle">none</property>
+                                            <property name="borderLeftWidth">medium</property>
+                                            <property name="borderRightColor">black</property>
+                                            <property name="borderRightStyle">none</property>
+                                            <property name="borderRightWidth">medium</property>
+                                            <property name="borderTopColor">black</property>
+                                            <property name="borderTopStyle">none</property>
+                                            <property name="borderTopWidth">medium</property>
+                                            <property name="marginTop">0pt</property>
+                                            <property name="marginLeft">0pt</property>
+                                            <property name="marginBottom">0pt</property>
+                                            <property name="marginRight">0pt</property>
+                                            <property name="paddingTop">1pt</property>
+                                            <property name="paddingLeft">1pt</property>
+                                            <property name="paddingBottom">1pt</property>
+                                            <property name="paddingRight">1pt</property>
+                                            <structure name="numberFormat">
+                                                <property name="category">Currency</property>
+                                                <property name="pattern">#,##0.00{RoundingMode=HALF_UP}</property>
+                                            </structure>
+                                            <property name="textAlign">right</property>
+                                            <property name="letterSpacing">normal</property>
+                                            <property name="lineHeight">normal</property>
+                                            <property name="orphans">2</property>
+                                            <property name="textTransform">none</property>
+                                            <property name="whiteSpace">nowrap</property>
+                                            <property name="widows">2</property>
+                                            <property name="wordSpacing">normal</property>
+                                            <property name="display">block</property>
+                                            <property name="pageBreakAfter">auto</property>
+                                            <property name="pageBreakBefore">auto</property>
+                                            <property name="pageBreakInside">auto</property>
+                                            <property name="showIfBlank">false</property>
+                                            <property name="canShrink">false</property>
+                                            <property name="overflow">hidden</property>
+                                            <property name="resultSetColumn">SUM DOLLARS</property>
+                                        </data>
+                                    </cell>
+                                    <cell id="2579">
+                                        <text name="BIRT Online Maps - 2 b - Add Location1" id="313">
+                                            <property name="contentType">html</property>
+                                            <text-property name="content"><![CDATA[<script>actuate.birt.maps.addLocation(<value-of>row.__rownum</value-of>, <VALUE-OF>row["LATITUDE"]</VALUE-OF>, <VALUE-OF>row["LONGITUDE"]</VALUE-OF>,"<div style='width:170px;height:125px'><table><tr bgcolor='#EEEEEE'><td colspan=2><font size=-1><VALUE-OF>row["CITY"]</VALUE-OF></font><br></td></tr><tr><td><font size=-2>Total Sale:</font></td><td><font size=-2><VALUE-OF  format="$#,##0.00{RoundingMode=HALF_UP}">row["Aggregation IntDollars"]</VALUE-OF></font></td></tr><tr><td colspan=2><img src='http://chart.apis.google.com/chart?chxr=0,0,2000000&amp;chxt=x&amp;chbh=18,3,0&amp;chs=180x80&amp;cht=bhg&amp;chco=4D89F9,C6D9FD,FF9900&amp;chds=0,2000000,0,2000000,0,2000000&amp;chd=t:<VALUE-OF>row["Aggregation IntDollars"]</VALUE-OF>|<VALUE-OF>BirtMath.round(row["AvgSale"],0)</VALUE-OF>|-1&amp;chdl=Sale+AMT|Avg'></img></td></tr></table></div>");</script>]]></text-property>
+                                        </text>
+                                    </cell>
+                                </row>
+                            </header>
+                        </group>
+                    </table>
+                </cell>
+            </row>
+        </grid>
+        <text name="BIRT Online Maps - 3 - Start Google Maps" id="74">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>setTimeout(actuate.birt.maps.google.start, 1);</script>]]></text-property>
+        </text>
+    </body>
+</report>

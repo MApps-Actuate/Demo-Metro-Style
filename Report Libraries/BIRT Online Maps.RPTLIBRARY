@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.6.1.v20100926-0604 Build &lt;2.6.1.v20100926-0604></property>
+    <property name="units">in</property>
+    <property name="theme">defaultTheme</property>
+    <parameters>
+        <scalar-parameter name="googleKey" id="121">
+            <property name="hidden">true</property>
+            <text-property name="promptText">Google API Key</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="sortBy">label</property>
+            <property name="sortDirection">asc</property>
+            <property name="dataType">string</property>
+            <property name="distinct">false</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">ABQIAAAAoc7bq7W26DqTyQp7JsHNiBTbKryICP_e3YcIZwHPTrQP2P3qKxSpz7A8qsU1_aNYMMQeIGYXBtKmjA</value>
+            </simple-property-list>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">ABQIAAAAoc7bq7W26DqTyQp7JsHNiBTbKryICP_e3YcIZwHPTrQP2P3qKxSpz7A8qsU1_aNYMMQeIGYXBtKmjA</property>
+                    <property name="label">localhost</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">false</property>
+            <property name="fixedOrder">false</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <themes>
+        <theme name="defaultTheme" id="4"/>
+    </themes>
+    <components>
+        <text name="BIRT Online Maps - 1 - Code" id="122">
+            <property name="fontSize">medium</property>
+            <property name="fontWeight">normal</property>
+            <property name="textAlign">left</property>
+            <property name="canShrink">false</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>
+
+if (window["actuate"] === undefined)
+    window["actuate"] = {};
+if (actuate["birt"] === undefined)
+    actuate.birt = {};
+
+actuate.birt.maps = {
+    divName: "actuate-birt-map",
+    addresses: [],
+    locations: [],
+    areas: [],
+
+    resetPinLetter: false,
+
+    loadResourcesOptions: null,
+    loadResourcesOptionsCounter: 0,
+
+    addAddress: function(id, addressValue, info) {
+        if (!addressValue) {
+            var addressValueElem = _$("Address_" + id);
+            if (addressValueElem)
+                addressValue = addressValueElem.innerHTML; else
+                addressValue = id;
+        }
+
+        var address = new Object();
+        address.id = id;
+        address.value = addressValue;
+        address.infoHTML = info == null ? addressValue : info;
+        address.pin = this.createPinObject(id, this.addresses.length);
+
+        this.addresses.push(address);
+        return address;
+    },
+
+    addLocation: function(id, lat, lon, info) {
+        if (!lat) {
+            var latElem = _$("Lat_" + id);
+            if (latElem)
+                lat = latElem.innerHTML; else
+                return;
+        }
+
+        if (!lon) {
+            var lonElem = _$("Lon_" + id);
+            if (lonElem)
+                lon = lonElem.innerHTML; else
+                return;
+        }
+
+        var loc = new Object();
+        loc.id = id;
+        loc.lat = lat;
+        loc.lon = lon;
+        loc.infoHTML = info;
+        loc.pin = this.createPinObject(id, this.locations.length);
+
+        this.locations.push(loc);
+        return loc;
+
+    },
+
+    createPinObject: function(id, idx) {
+        var pin = {};
+        var pinElem = _$("Pin_" + id);
+        if (pinElem) {
+            if (this.resetPinLetter)
+                pinElem.innerHTML = String.fromCharCode("A".charCodeAt(0) + idx);
+            pin.letter = pinElem.innerHTML;
+            pin.letterColor = pinElem.style.color;
+            pin.pinColor = pinElem.style.backgroundColor;
+        }
+        return pin;
+    },
+
+    initArea: function(id, strokeColor, strokeWeight, strokeOpacity, fillColor, fillOpacity) {
+        var area = new Object();
+        area.id = id;
+        area.points = [];
+        area.strokeColor = strokeColor;
+        area.strokeWeight = strokeWeight;
+        area.strokeOpacity = strokeOpacity;
+        area.fillColor = fillColor;
+        area.fillOpacity = fillOpacity;
+        this.areas.push(area);
+        return area;
+    },
+
+    addPointToArea: function(lat, lon) {
+        this.areas[this.areas.length - 1].points.push({lat: lat, lon: lon});
+    },
+
+    createPinIconURL: function(item) {
+        if (item.iconURL &amp;&amp; item.iconURL != "") {
+            return item.iconURL;
+        } else if (item.googleIconURL &amp;&amp; item.googleIconURL != "") {
+            return "http://www.google.com/intl/en_us/mapfiles/ms/micons/" + item.googleIconURL;
+        } else if (item.pin) {
+            var letter = (item.pin.letter &amp;&amp; item.pin.letter != "" &amp;&amp; item.pin.letter != "&amp;nbsp;") ? item.pin.letter : "+";
+            var pinColor = this.getColorCode(item.pin.pinColor, "FD7567");
+            var letterColor = this.getColorCode(item.pin.letterColor, "000000");
+
+            return "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=" + letter + "|" + pinColor + "|" + letterColor;
+        } else {
+            return "http://chart.apis.google.com/chart?chst=d_map_pin_letter&amp;chld=+|FD7567|000000";
+        }
+    },
+    
+    createPinShadowURL: function(item) {
+    	return "http://chart.apis.google.com/chart?chst=d_map_pin_shadow";
+    },
+
+    getColorCode: function(colorCode, defaultColorCode) {
+        if (colorCode == null)
+            return defaultColorCode;
+        colorCode = colorCode.replace(/\s+/g, "").toLowerCase();
+        if (colorCode == "")
+            return defaultColorCode;
+
+        if (colorCode.substring(0, 1) == "#")
+            return colorCode.substring(1);
+
+        if (colorCode.substring(0, 4) == "rgb(") {
+            colorCode = colorCode.substring(4, colorCode.length - 1);
+            var colors = colorCode.split(",");
+            return this.decToHex(colors[0]) + this.decToHex(colors[1]) + this.decToHex(colors[2]);
+        }
+
+        switch (colorCode) {
+            case "auto": return "000000";
+            case "aqua": return "00FFFF";
+            case "black": return "000000";
+            case "blue": return "0000FF";
+            case "fuchsia": return "FF00FF";
+            case "gray": return "808080";
+            case "green": return "008000";
+            case "lime": return "00FF00";
+            case "maroon": return "800000";
+            case "navy": return "000080";
+            case "olive": return "808000";
+            case "orange": return "FFA500";
+            case "purple": return "800080";
+            case "red": return "FF0000";
+            case "silver": return "C0C0C0";
+            case "teal": return "008080";
+            case "white": return "FFFFFF";
+            case "yellow": return "FFFF00";
+            default: return colorCode.length == 6 ? colorCode : defaultColorCode;
+        }
+    },
+    
+    decToHex: function(dec) {
+    	var hex = parseInt(dec).toString(16);
+    	if (hex.length == 1)
+    		hex = "0" + hex;
+    	return hex;
+    },
+
+    loadResources: function(resOpts) {
+        this.loadResourcesOptions = resOpts;
+        var i;
+        var head = document.getElementsByTagName("head")[0];
+        if (this.loadResourcesOptions.scripts) {
+            for (i = 0; i < this.loadResourcesOptions.scripts.length; i++) {
+                var script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = this.loadResourcesOptions.scripts[i];
+                head.appendChild(script);
+            }
+        }
+
+        if (this.loadResourcesOptions.styles) {
+            for (i = 0; i < this.loadResourcesOptions.styles.length; i++) {
+                var link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = this.loadResourcesOptions.styles[i];
+                head.appendChild(link);
+            }
+        }
+
+        if (this.loadResourcesOptions.callback) {
+            if (this.loadResourcesOptions.check) {
+                this.loadResourcesCheck();
+            } else {
+                this.loadResourcesOptions.callback();
+            }
+        }
+    },
+
+    loadResourcesCheck: function() {
+        if (window[this.loadResourcesOptions.check] === undefined) {
+            this.loadResourcesOptionsCounter++;
+            if (this.loadResourcesOptionsCounter < 20)
+                setTimeout(this.loadResourcesCheck.bind(this), 50);
+        } else {
+            this.loadResourcesOptions.callback();
+        }
+    }
+};
+
+actuate.birt.maps.google = {
+    map: null,
+    geoCoder: null,
+    maxLng: -1000,
+    maxLat: -1000,
+    minLng: 0,
+    minLat: 0,
+    retryAddresses: [],    
+    processedAddresses: 0,
+    geoCodingStart: 0,
+    geoCodingMaxZoomTime: 5000,
+    geoCodingMaxTime: 10000,
+
+    start: function() {
+    	if (window["google"] === undefined || google["maps"] === undefined) {
+    		var autoloadJSON = "{modules:[{name:\"maps\",version:3,callback:\"actuate.birt.maps.google.createMap\",other_params:\"sensor=false\"}]}";
+            var scriptSrc = "http://www.google.com/jsapi?autoload=" + encodeURIComponent(autoloadJSON);
+	        actuate.birt.maps.loadResources({scripts: [scriptSrc]});
+	    } else {
+	    	this.loadMap();
+	    }
+    },
+
+    createMap: function() {
+        actuate.birt.maps.google.loadMap.bind(actuate.birt.maps.google)();
+    },
+
+    loadMap: function() {
+    	var mapOptions = {
+    		zoom: 4,
+    		center: new google.maps.LatLng(38, -92),
+    		scrollwheel: false,
+    		mapTypeId: google.maps.MapTypeId.ROADMAP,
+    		navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL, position: google.maps.ControlPosition.TOP_RIGHT}    		
+    	};
+        this.map = new google.maps.Map(document.getElementById(actuate.birt.maps.divName), mapOptions);
+
+        var i;
+        if (actuate.birt.maps.addresses != null &amp;&amp; actuate.birt.maps.addresses.length > 0) {
+    		this.geoCoder = new google.maps.Geocoder();
+    		this.geoCodingStart = new Date().getTime();
+            for (i = 0; i < actuate.birt.maps.addresses.length; i++) {
+                this.loadAddress(actuate.birt.maps.addresses[i]);
+            }
+        }
+
+        if (actuate.birt.maps.locations != null &amp;&amp; actuate.birt.maps.locations.length > 0) {
+            for (i = 0; i < actuate.birt.maps.locations.length; i++) {
+                this.loadLocation(actuate.birt.maps.locations[i]);
+            }
+        }
+
+        if (actuate.birt.maps.areas != null &amp;&amp; actuate.birt.maps.areas.length > 0) {
+            for (i = 0; i < actuate.birt.maps.areas.length; i++) {
+                this.loadArea(actuate.birt.maps.areas[i]);
+            }
+        }
+
+        this.finishLoading();
+    },
+
+    loadRetryAddresses: function() {
+    	var elapsed = new Date().getTime() - this.geoCodingStart;
+    	if (elapsed > this.geoCodingMaxZoomTime)
+    		this.finishLoading();
+    	if (elapsed > this.geoCodingMaxTime)
+    		return;    	
+    		
+        this.processedAddresses = this.processedAddresses - this.retryAddresses.length;
+        var tmpAddresses = this.retryAddresses;
+        this.retryAddresses = [];
+        for (var i = 0; i < tmpAddresses.length; i++) {
+            this.loadAddress(tmpAddresses[i]);
+        }
+    },
+
+    loadAddress: function(address) {
+		this.geoCoder.geocode({address: address.value}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				this.adjustMinMaxBoundaries(results[0].geometry.location);
+				this.createMarker(address, results[0].geometry.location);			
+			} else {
+				this.retryAddresses.push(address);
+			}
+
+            this.processedAddresses++;
+            if (this.processedAddresses >= actuate.birt.maps.addresses.length) {
+                if (this.retryAddresses.length > 0)
+                    this.loadRetryAddresses();
+                else
+                    this.finishLoading();
+            }
+        }.bind(this));
+    },
+
+    loadLocation: function(loc) {
+        var point = new google.maps.LatLng(loc.lat, loc.lon);
+        this.adjustMinMaxBoundaries(point);
+        this.createMarker(loc, point);
+    },
+
+    loadArea: function(area) {
+        if (!area.points)
+            return;
+
+        var latLngPoints = [];
+        for (var i = 0; i < area.points.length; i++) {
+            latLngPoints.push(new google.maps.LatLng(area.points[i].lat, area.points[i].lon));
+        }
+
+		var polygonOptions = {
+			map: this.map,
+			paths: latLngPoints,
+			fillColor: area.fillColor,
+			fillOpacity: area.fillOpacity,
+			strokeColor: area.strokeColor,
+			strokeOpacity: area.strokeOpacity,
+			strokeWeight: area.strokeWeight
+		};
+        var polygon = new google.maps.Polygon(polygonOptions);
+        
+        var bounds = this.getPolygonBounds(polygon);
+        this.adjustMinMaxBoundaries(bounds.getNorthEast());
+        this.adjustMinMaxBoundaries(bounds.getSouthWest());
+    },
+
+    createMarker: function(item, point) {
+    	var title = item.value ? item.value : item.infoHTML &amp;&amp; item.infoHTML.length < 50 ? item.infoHTML : null;
+        var markerOptions = {
+        	map: this.map,
+        	position: point,
+        	icon: new google.maps.MarkerImage(actuate.birt.maps.createPinIconURL(item)),        	
+        	shadow: new google.maps.MarkerImage(actuate.birt.maps.createPinShadowURL(item), null, null, new google.maps.Point(13, 37)),
+        	title: title
+        };
+        
+        var marker = new google.maps.Marker(markerOptions);
+
+        if (item.infoHTML) {
+        	var contentElem = document.createElement("div");
+			contentElem.innerHTML = item.infoHTML;			
+			var infoWindow = new google.maps.InfoWindow({content: contentElem.firstChild});
+			google.maps.event.addListener(marker, 'click', function() {infoWindow.open(this.map, marker);}.bind(this));
+        }
+
+        return marker;
+    },
+    
+    getPolygonBounds: function(polygon) {
+        var bounds = new google.maps.LatLngBounds;
+        polygon.getPath().forEach(function(latLng){bounds.extend(latLng);});
+        return bounds;
+    },
+
+    adjustMinMaxBoundaries: function(point) {
+        if (this.maxLng == -1000) {
+            this.maxLng = point.lng();
+            this.minLng = point.lng();
+            this.maxLat = point.lat();
+            this.minLat = point.lat();
+            return;
+        }
+
+        if (point.lng() > this.maxLng)
+            this.maxLng = point.lng();
+
+        if (point.lng() < this.minLng)
+            this.minLng = point.lng();
+
+        if (point.lat() > this.maxLat)
+            this.maxLat = point.lat();
+
+        if (point.lat() < this.minLat)
+            this.minLat = point.lat();
+    },
+
+    finishLoading: function() {
+        if (this.maxLng == -1000)
+            return;
+
+        var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(this.minLat, this.minLng), new google.maps.LatLng(this.maxLat, this.maxLng));
+        this.map.fitBounds(bounds);
+    }
+};
+
+
+actuate.birt.maps.googleearth = {
+    earth: null,
+    geoCoder: null,
+    retryAddresses: [],
+    processedAddresses: 0,
+
+    start: function() {
+        var scriptSrc = "http://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22earth%22%2C%22version%22%3A%221%22%7D%5D%7D&amp;key=<VALUE-OF>if (reportContext.getParameterValue("googleKey")) reportContext.getParameterValue("googleKey"); else "";</VALUE-OF>";
+        actuate.birt.maps.loadResources({scripts: [scriptSrc], callback: this.createEarth.bind(this), check: "google"});
+    },
+
+    createEarth: function() {
+        document.getElementById(actuate.birt.maps.divName).innerHTML = "";
+        google.earth.createInstance(actuate.birt.maps.divName, this.loadEarth.bind(this), function(errorCode) {
+            alert("Error: " + errorCode + "\nError Initializing Google Earth")
+        });
+    },
+
+    loadEarth: function(instance) {
+
+        this.earth = instance;
+        this.earth.getWindow().setVisibility(true);
+
+        // add a navigation control
+        this.earth.getNavigationControl().setVisibility(this.earth.VISIBILITY_AUTO);
+
+        // add some layers
+        this.earth.getLayerRoot().enableLayerById(this.earth.LAYER_BORDERS, true);
+        this.earth.getLayerRoot().enableLayerById(this.earth.LAYER_ROADS, true);
+
+        var lookAt = this.earth.createLookAt("");
+        lookAt.set(36, -99, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0 , 0, 3500000);
+        this.earth.getView().setAbstractView(lookAt);
+
+        var i;
+        if (actuate.birt.maps.addresses != null &amp;&amp; actuate.birt.maps.addresses.length > 0) {
+            this.geoCoder = new google.maps.ClientGeocoder();
+            this.geoCoder.setCache(null);
+            for (i = 0; i < actuate.birt.maps.addresses.length; i++) {
+                this.loadAddress(actuate.birt.maps.addresses[i]);
+            }
+        }
+
+        if (actuate.birt.maps.locations != null &amp;&amp; actuate.birt.maps.locations.length > 0) {
+            for (i = 0; i < actuate.birt.maps.locations.length; i++) {
+                this.loadLocation(actuate.birt.maps.locations[i]);
+            }
+        }
+
+        if (actuate.birt.maps.areas != null &amp;&amp; actuate.birt.maps.areas.length > 0) {
+            for (i = 0; i < actuate.birt.maps.areas.length; i++) {
+                this.loadArea(actuate.birt.maps.areas[i]);
+            }
+        }
+
+        this.finishLoading();
+    },
+
+    loadRetryAddresses: function() {
+        this.processedAddresses = this.processedAddresses - this.retryAddresses.length;
+        var tmpAddresses = this.retryAddresses;
+        this.retryAddresses = [];
+        for (var i = 0; i < tmpAddresses.length; i++) {
+            this.loadAddress(tmpAddresses[i]);
+        }
+
+    },
+
+    loadAddress: function(address) {
+        this.geoCoder.getLocations(address.value, function(response) {
+            if (response.Status.code == 200) {
+                var place = response.Placemark[0];
+                var id = "";
+                if (address.name)
+                    id = address.name + "_point";
+                var point = this.earth.createPoint(id);
+                point.setLatitude(place.Point.coordinates[1]);
+                point.setLongitude(place.Point.coordinates[0]);
+                //TODO: still?
+                //this.adjustMinMaxBoundaries(point);
+                this.earth.getFeatures().appendChild(this.createPlacemark(address, point));
+
+            } else if (response.Status.code == 620) {
+                this.retryAddresses.push(address);
+            }
+
+            this.processedAddresses++;
+            if (this.processedAddresses >= actuate.birt.maps.addresses.length) {
+                if (this.retryAddresses.length > 0)
+                    this.loadRetryAddresses();
+                else
+                    this.finishLoading();
+            }
+        }.bind(this));
+    },
+
+    loadLocation: function(loc) {
+        var id = "";
+        if (loc.name)
+            id = loc.name + "_point";
+        var point = this.earth.createPoint(id);
+        point.setLatitude(loc.lat);
+        point.setLongitude(loc.lon);
+        //TODO: still?
+        //this.adjustMinMaxBoundaries(point);
+        this.earth.getFeatures().appendChild(this.createPlacemark(loc, point));
+    },
+
+    loadArea: function(area) {
+        if (!area.points)
+            return;
+
+        var name = "";
+        if (area.name)
+            name = area.name;
+        var polygonPlacemark = this.earth.createPlacemark(name);
+
+        var polygon = this.earth.createPolygon("");
+        polygon.setAltitudeMode(this.earth.ALTITUDE_CLAMP_TO_GROUND);
+        polygonPlacemark.setGeometry(polygon);
+
+        var outer = this.earth.createLinearRing("");
+        outer.setAltitudeMode(this.earth.ALTITUDE_CLAMP_TO_GROUND);
+        for (var i = 0; i < area.points.length; i++) {                        
+            outer.getCoordinates().pushLatLngAlt(area.points[1].lat, area.points[i].lon, 0);
+        }
+        polygon.setOuterBoundary(outer);
+
+        var styleSelector = this.earth.createStyle("");
+        polygonPlacemark.setStyleSelector(styleSelector);
+
+        var lineStyle =styleSelector.getLineStyle();
+        lineStyle.setWidth(area.strokeWeight);
+        var lineColor = this.getAlphaColor(actuate.birt.maps.getColorCode(area.strokeColor, "#0000ff"), area.stokeOpacity);
+        lineStyle.getColor().set(lineColor);
+
+        var polyColor = this.getAlphaColor(actuate.birt.maps.getColorCode(area.fillColor, "#0000ff"), area.fillOpacity);
+        styleSelector.getPolyStyle().getColor.set(polyColor);
+        
+        //TODO: Adjust minmax?
+        this.earth.getFeatures().appendChild(polygonPlacemark);
+    },
+
+    createPlacemark: function(item, point) {
+        var name = "Placemark";
+        if (item.name)
+            name = item.name;
+        var placemark = this.earth.createPlacemark("");
+        placemark.setName(name);
+        if (item.value)
+            placemark.setDescription(value);
+        
+        var icon = this.earth.createIcon("");
+        icon.setHref(actuate.birt.maps.createPinIconURL(item));
+        var style = this.earth.createStyle("");
+        style.getIconStyle().setIcon(icon);
+
+        if (item.infoHTML) {
+            google.earth.addEventListener(placemark, "click", function(event) {
+               event.preventDefault();
+               var balloon = this.earth.createHtmlStringBalloon('');
+               balloon.setFeature(placemark);
+               balloon.setContentString(item.infoHTML);
+               this.earth.setBalloon(balloon);
+            }.bind(this));
+        }
+
+        placemark.setStyleSelector(style);
+        placemark.setGeometry(point);
+
+        return placemark;
+    },
+
+    getAlphaColor: function(color, opacity) {
+        if (color.substring(0, 1) == "#")
+            color = color.substring(1);
+        opacity = parseFloat(opacity);
+        if (isNaN(opacity))
+            opacity = 1;
+        opacity = opacity * 255;
+        return color + (opacity.toString(16));
+    },
+
+    adjustMinMaxBoundaries: function(point) {
+    },
+
+    finishLoading: function() {
+    }
+};
+
+actuate.birt.maps.arcgis = {
+    map: null,
+    mapTile: null,
+    geoCoder: null,
+    mapPoints: null,
+    processedPoints: 0,
+
+    start: function() {
+        var scriptSrc = "http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.0";
+        var styleSrc = "http://serverapi.arcgisonline.com/jsapi/arcgis/2.0/js/dojo/dijit/themes/tundra/tundra.css";
+        actuate.birt.maps.loadResources({
+            scripts: [scriptSrc],
+            styles: [styleSrc],
+            check: "dojo",
+            callback: this.createMap.bind(this)
+        });
+    },
+
+    createMap: function() {
+        dojo.require("esri.map");
+        var mapDiv = dojo.byId(actuate.birt.maps.divName);
+        dojo.empty(mapDiv);
+        dojo.addClass(mapDiv, "tundra");
+        dojo.style(mapDiv, "width", mapDiv.offsetWidth + "px");
+        this.map = new esri.Map(actuate.birt.maps.divName);
+        this.mapTile = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_StreetMap_World_2D/MapServer");
+        this.map.addLayer(this.mapTile);
+
+        dojo.connect(this.map, "onLoad", this.loadMap.bind(this));
+    },
+
+    loadMap: function(){
+        var i;
+        if (actuate.birt.maps.addresses != null &amp;&amp; actuate.birt.maps.addresses.length > 0) {
+            dojo.require("esri.tasks.locator");
+            this.geoCoder = new esri.tasks.Locator("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer");
+            this.mapPoints = new esri.geometry.Multipoint(map.spatialReference);
+            dojo.connect(this.geoCoder, "onAddressToLocationsComplete", function() {
+                //do nothing for now
+            }.bind(this));
+
+            for (i = 0; i < actuate.birt.maps.addresses.length; i++) {
+                var addressParts = actuate.birt.maps.addresses[i].value.split(",");
+                var address = {Address: addressParts[0]};
+                if (addressParts.length >= 2)
+                    address.City = addressParts[1];
+                if (addressParts.length >= 3)
+                    address.State = addressParts[2];
+                if (addressParts.length >= 4)
+                    address.Zip = addressParts[3];
+
+                var deferred = this.geoCoder.addressToLocations(address);
+                deferred.addCallback(function(candidates){
+                    if (candidates.length > 0 &amp;&amp; candidates[0].score > 0) {
+                        var candidate = candidates[0];
+
+                        var symbol = new esri.symbol.SimpleMarkerSymbol();
+                        symbol.setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_DIAMOND);
+                        symbol.setColor(new dojo.Color([255,0,0,0.75]));
+
+                        var infoTemplate = new esri.InfoTemplate("Location", actuate.birt.maps.addresses[1].value);
+                        var graphic = new esri.Graphic(candidate.location, symbol, {address: actuate.birt.maps.addresses[i].value}, infoTemplate);
+                        map.graphics.add(graphic);
+
+                        this.mapPoints.addPoint(candidate.location);
+                    }
+                    this.processedPoints++;
+                    this.finishLoading();
+                }.bind(this));
+                deferred.addErrback(function(){
+                    this.processedPoints++;
+                    this.finishLoading();
+                }.bind(this));
+            }
+        }
+    },
+
+    finishLoading: function() {
+        if (this.processedPoints >= actuate.birt.maps.addresses.length) {
+            this.map.setExtent(this.mapPoints.getExtent().expand(2));
+            alert("all done");
+        }
+    }
+};
+
+if (window["$A"] === undefined) {
+    window.$A = function (iterable) {
+        if (!iterable) return [];
+        if (iterable.toArray) return iterable.toArray();
+        var length = iterable.length || 0, results = new Array(length);
+        while (length--) results[length] = iterable[length];
+        return results;
+    }
+}
+
+if (!Function.prototype.bind) {
+    Function.prototype.bind = function() {
+        if (arguments.length < 2 &amp;&amp; typeof arguments[0] == "undefined") return this;
+        var __method = this, args = $A(arguments), object = args.shift();
+        return function() {
+            return __method.apply(object, args.concat($A(arguments)));
+        }
+    }
+}
+</script>
+<div id="_$_dummyDiv12345"></div>
+<script>
+var _$_id = "";
+if (this._viewer) {
+    _$_id = this._viewer.getId() + "_";
+} else if (window["actuate"] !== undefined) {
+	var v = actuate.getViewer("_$_dummyDiv12345");
+	if (v)
+		_$_id = v.getId() + "_";
+} else if (document.getElementsByClassName) {
+ 	if (document.getElementsByClassName("actuateViewerContainer").length == 1)
+        _$_id = actuate.getViewer(document.getElementsByClassName("actuateViewerContainer")[0]).getId() + "_";   	
+} else {
+   	var exp = RegExp("\\bactuateViewerContainer\\b");
+   	var items = document.body.getElementsByTagName('*');
+   	var cls;
+   	for (var i = 0; i < items.length; i++) {
+   		cls = items[i].getAttribute("class") || items[i].className;
+   		if (cls &amp;&amp; exp.test(cls)) {
+   			window._$_id = actuate.getViewer(items[i]).getId() + "_";
+   			break;
+		}
+	}
+}
+
+var _$ = function (name) {
+	return document.getElementById(_$_id + name);
+}
+</script>]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 3 - Start Google Maps" id="123">
+            <property name="canShrink">false</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>actuate.birt.maps.google.start();</script>]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 1 - ResetPinLetter" id="124">
+            <property name="fontSize">medium</property>
+            <property name="fontWeight">normal</property>
+            <property name="textAlign">left</property>
+            <property name="canShrink">false</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>actuate.birt.maps.resetPinLetter = true;</script>]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 1 - Container" id="125">
+            <property name="fontSize">medium</property>
+            <property name="fontWeight">normal</property>
+            <property name="textAlign">left</property>
+            <property name="canShrink">false</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<div id="actuate-birt-map" style="width:100%;height:400px;text-align:center;">
+	Loading Map<br>Please Wait...
+</div>
+
+]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 2 a - Add Address" id="110">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>actuate.birt.maps.addAddress(<value-of>row.__rownum</value-of>);</script>]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 2 b - Add Location" id="259">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>actuate.birt.maps.addLocation(<value-of>row.__rownum</value-of>, <value-of>row["Lat"]</value-of>, <value-of>row["Lon"]</value-of>);</script>]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 2 c1 - Init Area" id="258">
+            <property name="comments">initArea(id, strokeColor, strokeWeight, strokeOpacity, fillColor, fillOpacity)</property>
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>actuate.birt.maps.initArea(<value-of>row.__rownum</value-of>, "#0000FF", 0.5, 1, "#0000FF", 0.25);</script>]]></text-property>
+        </text>
+        <text name="BIRT Online Maps - 2 c2 - Add Point to Area" id="74">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<script>actuate.birt.maps.addPointToArea(<value-of>row["Lat"]</value-of>, <value-of>row["Lon"]</value-of>);</script>]]></text-property>
+        </text>
+    </components>
+    <page-setup>
+        <simple-master-page name="NewSimpleMasterPage" id="3">
+            <property name="topMargin">1in</property>
+            <property name="leftMargin">1.25in</property>
+            <property name="bottomMargin">1in</property>
+            <property name="rightMargin">1.25in</property>
+        </simple-master-page>
+    </page-setup>
+</library>

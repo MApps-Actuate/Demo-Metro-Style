@@ -1,0 +1,1512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v20150206-1039 Build &lt;4.2.3.v20150206-1039></property>
+    <simple-property-list name="includeResource">
+        <value>Translation</value>
+    </simple-property-list>
+    <property name="units">in</property>
+    <method name="beforeFactory"><![CDATA[Packages.java.lang.System.out.println ("totot");]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">/ThemesReportItems3.rptlibrary</property>
+            <property name="namespace">ThemesReportItems3</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="pSec" id="626">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="javascript">var myDate = new Date();&#13;
+myDate.getSeconds();</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.datatools.connectivity.oda.flatfile" name="Flat File" id="624">
+            <property name="HOME">data/</property>
+            <property name="DELIMTYPE">PIPE</property>
+            <property name="CHARSET">UTF-8</property>
+            <property name="INCLCOLUMNNAME">YES</property>
+            <property name="INCLTYPELINE">NO</property>
+            <property name="TRAILNULLCOLS">NO</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.datatools.connectivity.oda.flatfile.dataSet" name="Data Set1" id="625">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">LABEL1_T</property>
+                    <expression name="expression" type="javascript">row["LABEL1"];&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "MARTIN") {'Urgent'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "THOMAS") {'Dringende'};</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">LABEL2_T</property>
+                    <expression name="expression" type="javascript">row["LABEL2"];&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "MARTIN") {'En Cours'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "THOMAS") {'Im Gang'};</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">LABEL3_T</property>
+                    <expression name="expression" type="javascript">row["LABEL3"];&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "MARTIN") {	'Terminé'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "THOMAS") {'Fertiggestellt'};</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">EMPTY</property>
+                    <expression name="expression" type="javascript">""</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">STYLE</property>
+                    <expression name="expression" type="javascript">"tron"</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">BG</property>
+                    <expression name="expression" type="javascript">"#4A4A4A"</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">THICKNESS</property>
+                    <expression name="expression" type="javascript">".2"</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">MIN</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">MIN</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL1</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">LABEL1</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL2</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">LABEL2</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL3</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">LABEL3</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">VALUE1</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="heading">VALUE1</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">VALUE2</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="heading">VALUE2</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">VALUE3</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="heading">VALUE3</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">COLOR1</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">COLOR1</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">COLOR2</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">COLOR2</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">COLOR3</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">COLOR3</text-property>
+                    <property name="indexColumn">false</property>
+                    <property name="compressed">false</property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL1_T</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL2_T</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL3_T</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">EMPTY</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">STYLE</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">BG</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+                <structure>
+                    <property name="columnName">THICKNESS</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+            </list-property>
+            <list-property name="filter">
+                <structure>
+                    <property name="operator">eq</property>
+                    <expression name="expr" type="javascript">row["MIN"]</expression>
+                    <simple-property-list name="value1">
+                        <value type="javascript">params["pSec"].value</value>
+                    </simple-property-list>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">MIN</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">LABEL1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">LABEL2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">LABEL3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">VALUE1</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">VALUE2</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">VALUE3</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">COLOR1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">COLOR2</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">COLOR3</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">LABEL1_T</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">LABEL2_T</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">LABEL3_T</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">EMPTY</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">STYLE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">BG</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">THICKNESS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Flat File</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">MIN</property>
+                    <property name="nativeName">MIN</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">LABEL1</property>
+                    <property name="nativeName">LABEL1</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">LABEL2</property>
+                    <property name="nativeName">LABEL2</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">LABEL3</property>
+                    <property name="nativeName">LABEL3</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">VALUE1</property>
+                    <property name="nativeName">VALUE1</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">VALUE2</property>
+                    <property name="nativeName">VALUE2</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">VALUE3</property>
+                    <property name="nativeName">VALUE3</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">COLOR1</property>
+                    <property name="nativeName">COLOR1</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">COLOR2</property>
+                    <property name="nativeName">COLOR2</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">COLOR3</property>
+                    <property name="nativeName">COLOR3</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select "MIN", "LABEL1", "LABEL2", "LABEL3", "VALUE1", "VALUE2", "VALUE3", "COLOR1", "COLOR2", "COLOR3" from "knobData.csv" : {"MIN","MIN",INT;"LABEL1","LABEL1",STRING;"LABEL2","LABEL2",STRING;"LABEL3","LABEL3",STRING;"VALUE1","VALUE1",INT;"VALUE2","VALUE2",INT;"VALUE3","VALUE3",INT;"COLOR1","COLOR1",STRING;"COLOR2","COLOR2",STRING;"COLOR3","COLOR3",STRING}]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>MIN</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>MIN</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LABEL1</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LABEL1</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LABEL2</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LABEL2</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LABEL3</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LABEL3</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>VALUE1</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>VALUE1</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>VALUE2</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>VALUE2</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>VALUE3</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>VALUE3</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COLOR1</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COLOR1</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COLOR2</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COLOR2</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>COLOR3</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>COLOR3</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">landscape</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="685">
+            <property name="width">2.3645833333333335in</property>
+            <expression name="bookmark" type="javascript">"knob chart"</expression>
+            <column id="714">
+                <property name="width">2.1in</property>
+            </column>
+            <column id="710">
+                <property name="width">2.1in</property>
+            </column>
+            <column id="686">
+                <property name="width">2.1in</property>
+            </column>
+            <row id="715">
+                <cell id="716">
+                    <property name="colSpan">3</property>
+                    <property name="rowSpan">1</property>
+                    <grid id="1745">
+                        <column id="1746">
+                            <property name="width">0.4in</property>
+                        </column>
+                        <column id="1747"/>
+                        <row id="1748">
+                            <property name="verticalAlign">top</property>
+                            <cell id="1749">
+                                <property name="paddingLeft">5pt</property>
+                                <text id="1744">
+                                    <property name="fontSize">18pt</property>
+                                    <property name="color">#F5F5F5</property>
+                                    <property name="textAlign">left</property>
+                                    <property name="display">block</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<span class="fa fa-heartbeat"/>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="1750">
+                                <label id="1742">
+                                    <property name="fontFamily">"Segoe UI"</property>
+                                    <property name="fontSize">20pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="color">#F5F5F5</property>
+                                    <property name="textAlign">left</property>
+                                    <property name="display">block</property>
+                                    <text-property name="text" key="Real Time">Real Time insight</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="689">
+                <cell id="711">
+                    <extended-item extensionName="HTMLControl" id="622">
+                        <property name="css">div.knobstyle{text-align: center; width: 280px; float: left}&#13;
+div.knobstyle > p{font-size: 20px}</property>
+                        <method name="clientOnCreate"><![CDATA[var config = {
+/*
+* Provide the column binding names as shown below. If not all
+* column names are specified, the template will use default value instead.
+*/
+		 
+// 0 - Label of the knob	 
+// labelColumn : "<changeme>",
+	labelColumn : "LABEL1_T",
+
+// 1 - Value of the knob (number)
+//	valueColumn : "<changeme>",
+	valueColumn : "VALUE1",
+			 
+// 2 - Min value of the knob (number) default 0
+	 minColumn : "EMPTY",
+
+// 3 - Max of the knob (number) default 100
+	maxColumn : "EMPTY",
+	
+// 4 - display the value in the center (true/false) default true
+	displayInputColumn : "EMPTY",
+
+// 5 - Step of digit (number) default 1
+	stepColumn : "EMPTY",
+	
+// 6 - width of the knob (in pixel) default 200
+	widthColumn : "SIZE",
+
+// 7 - height of the knob (in pixel) default 200
+	heightColumn : "SIZE",
+		
+// 8 - readonly (true/false) default false
+	readOnlyColumn : "EMPTY",	
+    
+// 9 - if not readonly, display the previous value (true/false) default false
+	displayPreviousColumn : "EMPTY",	
+	
+// 10 - set start angle (-360 to 360) default 0
+	angleOffsetColumn : "EMPTY",
+
+// 11 - set the line cap to round or not (rond / butt) default butt
+	linecapColumn : "EMPTY",
+            
+// 12 - set foreground color (HEX) default #87CEEB
+//	fgColorColumn : "<changeme>",
+	fgColorColumn : "COLOR1",	
+
+// 13 - set background color (HEX) default #EEEEEE
+//	bgColorColumn : "<changeme>",
+	bgColorColumn : "BG",	
+	
+// 14 - set Arc angle (for not full knob) default full knob
+	angleArcColumn : "EMPTY",
+	
+// 15 - set rotation direction (clockwise / anticlockwise) default clockwise
+	rotationColumn : "EMPTY",
+
+// 16 - knob thickness (number) default 0.35
+	 thicknessColumn : "THICKNESS",
+
+// 17 - cursor mode  (true/false) default false
+	cursorColumn : "EMPTY",
+		
+// 18 - skin (defaut or tron) default no skin
+//	skinColumn : "<changeme>"
+	skinColumn : "STYLE"
+};
+
+// *************************************************************************
+// DONT CHANGE ANYTHING AFTER THIS
+// *************************************************************************
+var knobAttr = ["data-label", "value", "data-min", "data-max", "data-displayInput", "data-step", "data-width", "data-height", "data-readOnly", "data-displayPrevious", "data-angleOffset", "data-linecap", "data-fgColor", "data-bgColor", "data-angleArc", "data-rotation", "data-thickness", "data-cursor", "data-skin"];
+
+var cursor = this.getDataCursor();
+var rows = [];
+while (cursor.hasNext()) {
+	var rowData = cursor.next();
+	var row = [];
+	row.push(rowData[config.labelColumn]);
+	row.push(rowData[config.valueColumn]);
+	row.push(rowData[config.minColumn]);
+	row.push(rowData[config.maxColumn]);		
+	row.push(rowData[config.displayInputColumn]);
+	row.push(rowData[config.stepColumn]);
+	row.push(rowData[config.widthColumn]);
+	row.push(rowData[config.heightColumn]);		
+	row.push(rowData[config.readOnlyColumn]);
+	row.push(rowData[config.displayPreviousColumn]);
+	row.push(rowData[config.angleOffsetColumn]);
+	row.push(rowData[config.linecapColumn]);
+	row.push(rowData[config.fgColorColumn]);
+	row.push(rowData[config.bgColorColumn]);	
+	row.push(rowData[config.angleArcColumn]);
+	row.push(rowData[config.rotationColumn]);
+	row.push(rowData[config.thicknessColumn]);
+	row.push(rowData[config.cursorColumn]);
+	row.push(rowData[config.skinColumn]);
+	rows.push(row);
+};
+
+var containerId = this.getId();
+
+var callback = function() {
+// create knob input
+	for(var i=0;i<rows.length;i++) {
+
+// create div
+		myHTML = "<div class='knobstyle'>";
+// create input		
+		myHTML += "<input class='knob'";
+		
+// add input attribute		
+		for(var j=1;j<knobAttr.length;j++) {	
+			if (rows[i][j] != "<changeme>" &amp;&amp; rows[i][j].length > 0) myHTML += " " + knobAttr[j] + "='"+ rows[i][j] + "'";
+		};
+
+// end of input		
+		myHTML += ">"
+// add label row[0]
+		if (rows[i][0] != "<changeme>" &amp;&amp; rows[i][0].length > 0) myHTML += "<p>" + rows[i][0] + "</p>";
+// end of div
+		myHTML += "</div>";
+// add div to html		
+		$("#" + containerId).append(myHTML);		
+	};
+	
+// *******************************************************	
+// JQUERY KNOB	
+// *******************************************************
+    $(".knob").knob({
+        /*change : function (value) {
+         //console.log("change : " + value);
+         },
+         release : function (value) {
+         console.log("release : " + value);
+         },
+         cancel : function () {
+         console.log("cancel : " + this.value);
+         },*/
+        draw: function() {
+
+            // "tron" case
+            if (this.$.data('skin') == 'tron') {
+
+                var a = this.angle(this.cv)  // Angle
+                        , sa = this.startAngle          // Previous start angle
+                        , sat = this.startAngle         // Start angle
+                        , ea                            // Previous end angle
+                        , eat = sat + a                 // End angle
+                        , r = true;
+
+                this.g.lineWidth = this.lineWidth;
+
+                this.o.cursor
+                        &amp;&amp; (sat = eat - 0.3)
+                        &amp;&amp; (eat = eat + 0.3);
+
+                if (this.o.displayPrevious) {
+                    ea = this.startAngle + this.angle(this.value);
+                    this.o.cursor
+                            &amp;&amp; (sa = ea - 0.3)
+                            &amp;&amp; (ea = ea + 0.3);
+                    this.g.beginPath();
+                    this.g.strokeStyle = this.previousColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                    this.g.stroke();
+                }
+
+                this.g.beginPath();
+                this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                this.g.stroke();
+
+                this.g.lineWidth = 2;
+                this.g.beginPath();
+                this.g.strokeStyle = this.o.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                this.g.stroke();
+
+                return false;
+            }
+        }
+    });	
+		
+};
+ 
+head.load(this.getBirtResourceURL("js/jquery.knob.js"),callback);]]></method>
+                        <property name="display">block</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="height">2in</property>
+                        <property name="width">2.05in</property>
+                        <property name="dataSet">Data Set1</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">VALUE1</property>
+                                <text-property name="displayName">VALUE1</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE1"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VALUE2</property>
+                                <text-property name="displayName">VALUE2</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE2"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VALUE3</property>
+                                <text-property name="displayName">VALUE3</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE3"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR1</property>
+                                <text-property name="displayName">COLOR1</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR1"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR2</property>
+                                <text-property name="displayName">COLOR2</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR2"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR3</property>
+                                <text-property name="displayName">COLOR3</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR3"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL1_T</property>
+                                <text-property name="displayName">LABEL1_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL1_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL2_T</property>
+                                <text-property name="displayName">LABEL2_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL2_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL3_T</property>
+                                <text-property name="displayName">LABEL3_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL3_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">EMPTY</property>
+                                <text-property name="displayName">EMPTY</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["EMPTY"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">BG</property>
+                                <text-property name="displayName">BG</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["BG"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">STYLE</property>
+                                <text-property name="displayName">STYLE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["STYLE"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">THICKNESS</property>
+                                <text-property name="displayName">THICKNESS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["THICKNESS"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">SIZE</property>
+                                <expression name="expression" type="javascript">"120"</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                    </extended-item>
+                </cell>
+                <cell id="707">
+                    <extended-item extensionName="HTMLControl" id="705">
+                        <property name="css">div.knobstyle{text-align: center; width: 280px; float: left}&#13;
+div.knobstyle > p{font-size: 20px}</property>
+                        <method name="clientOnCreate"><![CDATA[var config = {
+/*
+* Provide the column binding names as shown below. If not all
+* column names are specified, the template will use default value instead.
+*/
+		 
+// 0 - Label of the knob	 
+// labelColumn : "<changeme>",
+	labelColumn : "LABEL2_T",
+
+// 1 - Value of the knob (number)
+//	valueColumn : "<changeme>",
+	valueColumn : "VALUE2",
+			 
+// 2 - Min value of the knob (number) default 0
+	 minColumn : "EMPTY",
+
+// 3 - Max of the knob (number) default 100
+	maxColumn : "EMPTY",
+	
+// 4 - display the value in the center (true/false) default true
+	displayInputColumn : "EMPTY",
+
+// 5 - Step of digit (number) default 1
+	stepColumn : "EMPTY",
+	
+// 6 - width of the knob (in pixel) default 200
+	widthColumn : "SIZE",
+
+// 7 - height of the knob (in pixel) default 200
+	heightColumn : "SIZE",
+		
+// 8 - readonly (true/false) default false
+	readOnlyColumn : "EMPTY",	
+    
+// 9 - if not readonly, display the previous value (true/false) default false
+	displayPreviousColumn : "EMPTY",	
+	
+// 10 - set start angle (-360 to 360) default 0
+	angleOffsetColumn : "EMPTY",
+
+// 11 - set the line cap to round or not (rond / butt) default butt
+	linecapColumn : "EMPTY",
+            
+// 12 - set foreground color (HEX) default #87CEEB
+//	fgColorColumn : "<changeme>",
+	fgColorColumn : "COLOR2",	
+
+// 13 - set background color (HEX) default #EEEEEE
+//	bgColorColumn : "<changeme>",
+	bgColorColumn : "BG",	
+	
+// 14 - set Arc angle (for not full knob) default full knob
+	angleArcColumn : "EMPTY",
+	
+// 15 - set rotation direction (clockwise / anticlockwise) default clockwise
+	rotationColumn : "EMPTY",
+
+// 16 - knob thickness (number) default 0.35
+	 thicknessColumn : "THICKNESS",
+
+// 17 - cursor mode  (true/false) default false
+	cursorColumn : "EMPTY",
+		
+// 18 - skin (defaut or tron) default no skin
+//	skinColumn : "<changeme>"
+	skinColumn : "STYLE"
+};
+
+// *************************************************************************
+// DONT CHANGE ANYTHING AFTER THIS
+// *************************************************************************
+var knobAttr = ["data-label", "value", "data-min", "data-max", "data-displayInput", "data-step", "data-width", "data-height", "data-readOnly", "data-displayPrevious", "data-angleOffset", "data-linecap", "data-fgColor", "data-bgColor", "data-angleArc", "data-rotation", "data-thickness", "data-cursor", "data-skin"];
+
+var cursor = this.getDataCursor();
+var rows = [];
+while (cursor.hasNext()) {
+	var rowData = cursor.next();
+	var row = [];
+	row.push(rowData[config.labelColumn]);
+	row.push(rowData[config.valueColumn]);
+	row.push(rowData[config.minColumn]);
+	row.push(rowData[config.maxColumn]);		
+	row.push(rowData[config.displayInputColumn]);
+	row.push(rowData[config.stepColumn]);
+	row.push(rowData[config.widthColumn]);
+	row.push(rowData[config.heightColumn]);		
+	row.push(rowData[config.readOnlyColumn]);
+	row.push(rowData[config.displayPreviousColumn]);
+	row.push(rowData[config.angleOffsetColumn]);
+	row.push(rowData[config.linecapColumn]);
+	row.push(rowData[config.fgColorColumn]);
+	row.push(rowData[config.bgColorColumn]);	
+	row.push(rowData[config.angleArcColumn]);
+	row.push(rowData[config.rotationColumn]);
+	row.push(rowData[config.thicknessColumn]);
+	row.push(rowData[config.cursorColumn]);
+	row.push(rowData[config.skinColumn]);
+	rows.push(row);
+};
+
+var containerId = this.getId();
+
+var callback = function() {
+// create knob input
+	for(var i=0;i<rows.length;i++) {
+
+// create div
+		myHTML = "<div class='knobstyle'>";
+// create input		
+		myHTML += "<input class='knob'";
+		
+// add input attribute		
+		for(var j=1;j<knobAttr.length;j++) {	
+			if (rows[i][j] != "<changeme>" &amp;&amp; rows[i][j].length > 0) myHTML += " " + knobAttr[j] + "='"+ rows[i][j] + "'";
+		};
+
+// end of input		
+		myHTML += ">"
+// add label row[0]
+		if (rows[i][0] != "<changeme>" &amp;&amp; rows[i][0].length > 0) myHTML += "<p>" + rows[i][0] + "</p>";
+// end of div
+		myHTML += "</div>";
+// add div to html		
+		$("#" + containerId).append(myHTML);		
+	};
+	
+// *******************************************************	
+// JQUERY KNOB	
+// *******************************************************
+    $(".knob").knob({
+        /*change : function (value) {
+         //console.log("change : " + value);
+         },
+         release : function (value) {
+         console.log("release : " + value);
+         },
+         cancel : function () {
+         console.log("cancel : " + this.value);
+         },*/
+        draw: function() {
+
+            // "tron" case
+            if (this.$.data('skin') == 'tron') {
+
+                var a = this.angle(this.cv)  // Angle
+                        , sa = this.startAngle          // Previous start angle
+                        , sat = this.startAngle         // Start angle
+                        , ea                            // Previous end angle
+                        , eat = sat + a                 // End angle
+                        , r = true;
+
+                this.g.lineWidth = this.lineWidth;
+
+                this.o.cursor
+                        &amp;&amp; (sat = eat - 0.3)
+                        &amp;&amp; (eat = eat + 0.3);
+
+                if (this.o.displayPrevious) {
+                    ea = this.startAngle + this.angle(this.value);
+                    this.o.cursor
+                            &amp;&amp; (sa = ea - 0.3)
+                            &amp;&amp; (ea = ea + 0.3);
+                    this.g.beginPath();
+                    this.g.strokeStyle = this.previousColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                    this.g.stroke();
+                }
+
+                this.g.beginPath();
+                this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                this.g.stroke();
+
+                this.g.lineWidth = 2;
+                this.g.beginPath();
+                this.g.strokeStyle = this.o.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                this.g.stroke();
+
+                return false;
+            }
+        }
+    });	
+		
+};
+ 
+head.load(this.getBirtResourceURL("js/jquery.knob.js"),callback);]]></method>
+                        <property name="display">block</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="height">2in</property>
+                        <property name="width">2.05in</property>
+                        <property name="dataSet">Data Set1</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">VALUE1</property>
+                                <text-property name="displayName">VALUE1</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE1"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VALUE2</property>
+                                <text-property name="displayName">VALUE2</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE2"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VALUE3</property>
+                                <text-property name="displayName">VALUE3</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE3"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR1</property>
+                                <text-property name="displayName">COLOR1</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR1"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR2</property>
+                                <text-property name="displayName">COLOR2</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR2"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR3</property>
+                                <text-property name="displayName">COLOR3</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR3"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL1_T</property>
+                                <text-property name="displayName">LABEL1_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL1_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL2_T</property>
+                                <text-property name="displayName">LABEL2_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL2_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL3_T</property>
+                                <text-property name="displayName">LABEL3_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL3_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">EMPTY</property>
+                                <text-property name="displayName">EMPTY</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["EMPTY"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">BG</property>
+                                <text-property name="displayName">BG</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["BG"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">STYLE</property>
+                                <text-property name="displayName">STYLE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["STYLE"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">THICKNESS</property>
+                                <text-property name="displayName">THICKNESS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["THICKNESS"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">SIZE</property>
+                                <expression name="expression" type="javascript">"120"</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                    </extended-item>
+                </cell>
+                <cell id="690">
+                    <extended-item extensionName="HTMLControl" id="706">
+                        <property name="css">div.knobstyle{text-align: center; width: 280px; float: left}&#13;
+div.knobstyle > p{font-size: 20px}</property>
+                        <method name="clientOnCreate"><![CDATA[var config = {
+/*
+* Provide the column binding names as shown below. If not all
+* column names are specified, the template will use default value instead.
+*/
+		 
+// 0 - Label of the knob	 
+// labelColumn : "<changeme>",
+	labelColumn : "LABEL3_T",
+
+// 1 - Value of the knob (number)
+//	valueColumn : "<changeme>",
+	valueColumn : "VALUE3",
+			 
+// 2 - Min value of the knob (number) default 0
+	 minColumn : "EMPTY",
+
+// 3 - Max of the knob (number) default 100
+	maxColumn : "EMPTY",
+	
+// 4 - display the value in the center (true/false) default true
+	displayInputColumn : "EMPTY",
+
+// 5 - Step of digit (number) default 1
+	stepColumn : "EMPTY",
+	
+// 6 - width of the knob (in pixel) default 200
+	widthColumn : "SIZE",
+
+// 7 - height of the knob (in pixel) default 200
+	heightColumn : "SIZE",
+		
+// 8 - readonly (true/false) default false
+	readOnlyColumn : "EMPTY",	
+    
+// 9 - if not readonly, display the previous value (true/false) default false
+	displayPreviousColumn : "EMPTY",	
+	
+// 10 - set start angle (-360 to 360) default 0
+	angleOffsetColumn : "EMPTY",
+
+// 11 - set the line cap to round or not (rond / butt) default butt
+	linecapColumn : "EMPTY",
+            
+// 12 - set foreground color (HEX) default #87CEEB
+//	fgColorColumn : "<changeme>",
+	fgColorColumn : "COLOR3",	
+
+// 13 - set background color (HEX) default #EEEEEE
+//	bgColorColumn : "<changeme>",
+	bgColorColumn : "BG",	
+	
+// 14 - set Arc angle (for not full knob) default full knob
+	angleArcColumn : "EMPTY",
+	
+// 15 - set rotation direction (clockwise / anticlockwise) default clockwise
+	rotationColumn : "EMPTY",
+
+// 16 - knob thickness (number) default 0.35
+	 thicknessColumn : "THICKNESS",
+
+// 17 - cursor mode  (true/false) default false
+	cursorColumn : "EMPTY",
+		
+// 18 - skin (defaut or tron) default no skin
+//	skinColumn : "<changeme>"
+	skinColumn : "STYLE"
+};
+
+// *************************************************************************
+// DONT CHANGE ANYTHING AFTER THIS
+// *************************************************************************
+var knobAttr = ["data-label", "value", "data-min", "data-max", "data-displayInput", "data-step", "data-width", "data-height", "data-readOnly", "data-displayPrevious", "data-angleOffset", "data-linecap", "data-fgColor", "data-bgColor", "data-angleArc", "data-rotation", "data-thickness", "data-cursor", "data-skin"];
+
+var cursor = this.getDataCursor();
+var rows = [];
+while (cursor.hasNext()) {
+	var rowData = cursor.next();
+	var row = [];
+	row.push(rowData[config.labelColumn]);
+	row.push(rowData[config.valueColumn]);
+	row.push(rowData[config.minColumn]);
+	row.push(rowData[config.maxColumn]);		
+	row.push(rowData[config.displayInputColumn]);
+	row.push(rowData[config.stepColumn]);
+	row.push(rowData[config.widthColumn]);
+	row.push(rowData[config.heightColumn]);		
+	row.push(rowData[config.readOnlyColumn]);
+	row.push(rowData[config.displayPreviousColumn]);
+	row.push(rowData[config.angleOffsetColumn]);
+	row.push(rowData[config.linecapColumn]);
+	row.push(rowData[config.fgColorColumn]);
+	row.push(rowData[config.bgColorColumn]);	
+	row.push(rowData[config.angleArcColumn]);
+	row.push(rowData[config.rotationColumn]);
+	row.push(rowData[config.thicknessColumn]);
+	row.push(rowData[config.cursorColumn]);
+	row.push(rowData[config.skinColumn]);
+	rows.push(row);
+};
+
+var containerId = this.getId();
+
+var callback = function() {
+// create knob input
+	for(var i=0;i<rows.length;i++) {
+
+// create div
+		myHTML = "<div class='knobstyle'>";
+// create input		
+		myHTML += "<input class='knob'";
+		
+// add input attribute		
+		for(var j=1;j<knobAttr.length;j++) {	
+			if (rows[i][j] != "<changeme>" &amp;&amp; rows[i][j].length > 0) myHTML += " " + knobAttr[j] + "='"+ rows[i][j] + "'";
+		};
+
+// end of input		
+		myHTML += ">"
+// add label row[0]
+		if (rows[i][0] != "<changeme>" &amp;&amp; rows[i][0].length > 0) myHTML += "<p>" + rows[i][0] + "</p>";
+// end of div
+		myHTML += "</div>";
+// add div to html		
+		$("#" + containerId).append(myHTML);		
+	};
+	
+// *******************************************************	
+// JQUERY KNOB	
+// *******************************************************
+    $(".knob").knob({
+        /*change : function (value) {
+         //console.log("change : " + value);
+         },
+         release : function (value) {
+         console.log("release : " + value);
+         },
+         cancel : function () {
+         console.log("cancel : " + this.value);
+         },*/
+        draw: function() {
+
+            // "tron" case
+            if (this.$.data('skin') == 'tron') {
+
+                var a = this.angle(this.cv)  // Angle
+                        , sa = this.startAngle          // Previous start angle
+                        , sat = this.startAngle         // Start angle
+                        , ea                            // Previous end angle
+                        , eat = sat + a                 // End angle
+                        , r = true;
+
+                this.g.lineWidth = this.lineWidth;
+
+                this.o.cursor
+                        &amp;&amp; (sat = eat - 0.3)
+                        &amp;&amp; (eat = eat + 0.3);
+
+                if (this.o.displayPrevious) {
+                    ea = this.startAngle + this.angle(this.value);
+                    this.o.cursor
+                            &amp;&amp; (sa = ea - 0.3)
+                            &amp;&amp; (ea = ea + 0.3);
+                    this.g.beginPath();
+                    this.g.strokeStyle = this.previousColor;
+                    this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+                    this.g.stroke();
+                }
+
+                this.g.beginPath();
+                this.g.strokeStyle = r ? this.o.fgColor : this.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+                this.g.stroke();
+
+                this.g.lineWidth = 2;
+                this.g.beginPath();
+                this.g.strokeStyle = this.o.fgColor;
+                this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+                this.g.stroke();
+
+                return false;
+            }
+        }
+    });	
+		
+};
+ 
+head.load(this.getBirtResourceURL("js/jquery.knob.js"),callback);]]></method>
+                        <property name="display">block</property>
+                        <property name="pageBreakAfter">always</property>
+                        <property name="height">2in</property>
+                        <property name="width">2.05in</property>
+                        <property name="dataSet">Data Set1</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">VALUE1</property>
+                                <text-property name="displayName">VALUE1</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE1"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VALUE2</property>
+                                <text-property name="displayName">VALUE2</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE2"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VALUE3</property>
+                                <text-property name="displayName">VALUE3</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE3"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR1</property>
+                                <text-property name="displayName">COLOR1</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR1"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR2</property>
+                                <text-property name="displayName">COLOR2</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR2"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">COLOR3</property>
+                                <text-property name="displayName">COLOR3</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["COLOR3"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL1_T</property>
+                                <text-property name="displayName">LABEL1_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL1_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL2_T</property>
+                                <text-property name="displayName">LABEL2_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL2_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL3_T</property>
+                                <text-property name="displayName">LABEL3_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL3_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">EMPTY</property>
+                                <text-property name="displayName">EMPTY</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["EMPTY"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">BG</property>
+                                <text-property name="displayName">BG</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["BG"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">STYLE</property>
+                                <text-property name="displayName">STYLE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["STYLE"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">THICKNESS</property>
+                                <text-property name="displayName">THICKNESS</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["THICKNESS"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                            <structure>
+                                <property name="name">SIZE</property>
+                                <expression name="expression" type="javascript">"120"</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                    </extended-item>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

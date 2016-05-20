@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v20150206-1039 Build &lt;4.2.3.v20150206-1039></property>
+    <simple-property-list name="includeResource">
+        <value>Translation</value>
+    </simple-property-list>
+    <property name="units">in</property>
+    <property name="theme">ThemesReportItems31.Modern</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <list-property name="libraries">
+        <structure>
+            <property name="fileName">/ThemesReportItems31.rptlibrary</property>
+            <property name="namespace">ThemesReportItems31</property>
+        </structure>
+    </list-property>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.datatools.connectivity.oda.flatfile" name="Data Source" id="4">
+            <property name="HOME">data/</property>
+            <property name="DELIMTYPE">PIPE</property>
+            <property name="CHARSET">UTF-8</property>
+            <property name="INCLCOLUMNNAME">YES</property>
+            <property name="INCLTYPELINE">NO</property>
+            <property name="TRAILNULLCOLS">NO</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.datatools.connectivity.oda.flatfile.dataSet" name="Data Set" id="5">
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">LABEL_T</property>
+                    <expression name="expression" type="javascript">row["LABEL"];&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "MARTIN" &amp;&amp; row["LABEL"] == 'Urgent') {&#13;
+	'Urgent'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "THOMAS" &amp;&amp; row["LABEL"] == 'Urgent') {&#13;
+	'Dringende'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "MARTIN" &amp;&amp; row["LABEL"] == 'In Progress') {&#13;
+	'En Cours'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "THOMAS" &amp;&amp; row["LABEL"] == 'In Progress') {&#13;
+	'Im Gang'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "MARTIN" &amp;&amp; row["LABEL"] == 'Complete') {&#13;
+	'Terminé'};&#13;
+if (BirtStr.toUpper(reportContext.getAppContext().get("ServerUserName")) == "THOMAS" &amp;&amp; row["LABEL"] == 'Complete') {&#13;
+	'Fertiggestellt'};</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">DATE</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">DATE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="heading">LABEL</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">VALUE</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="heading">VALUE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">ORDER</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="heading">ORDER</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">LABEL_T</property>
+                    <property name="analysis">attribute</property>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">DATE</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">LABEL</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">VALUE</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">ORDER</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">LABEL_T</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">DATE</property>
+                    <property name="nativeName">DATE</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">LABEL</property>
+                    <property name="nativeName">LABEL</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">VALUE</property>
+                    <property name="nativeName">VALUE</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">ORDER</property>
+                    <property name="nativeName">ORDER</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select "DATE", "LABEL", "VALUE", "ORDER" from "knobData2.csv" : {"DATE","DATE",DATE;"LABEL","LABEL",STRING;"VALUE","VALUE",INT;"ORDER","ORDER",INT}]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>DATE</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>DATE</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>LABEL</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>LABEL</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>VALUE</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>-1</design:precision>
+            <design:scale>-1</design:scale>
+            <design:nullability>Unknown</design:nullability>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>VALUE</design:label>
+            <design:formattingHints/>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">auto</property>
+            <property name="backgroundColor">#C0C0C0</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="7">
+            <property name="height">3.34375in</property>
+            <property name="width">6.614583333333333in</property>
+            <expression name="bookmark" type="javascript">"line chart"</expression>
+            <column id="8">
+                <property name="width">6.614583333333333in</property>
+            </column>
+            <row id="9">
+                <property name="height">3.34375in</property>
+                <cell id="10">
+                    <grid id="1745">
+                        <column id="1746">
+                            <property name="width">0.4in</property>
+                        </column>
+                        <column id="1747"/>
+                        <row id="1748">
+                            <property name="verticalAlign">top</property>
+                            <cell id="1749">
+                                <property name="paddingLeft">5pt</property>
+                                <text id="1744">
+                                    <property name="fontSize">18pt</property>
+                                    <property name="color">#F5F5F5</property>
+                                    <property name="textAlign">left</property>
+                                    <property name="display">block</property>
+                                    <property name="contentType">html</property>
+                                    <text-property name="content"><![CDATA[<span class="fa fa-calendar"/>]]></text-property>
+                                </text>
+                            </cell>
+                            <cell id="1750">
+                                <label id="1742">
+                                    <property name="fontFamily">"Segoe UI"</property>
+                                    <property name="fontSize">20pt</property>
+                                    <property name="fontWeight">normal</property>
+                                    <property name="color">#F5F5F5</property>
+                                    <property name="textAlign">left</property>
+                                    <property name="display">block</property>
+                                    <text-property name="text" key="Number of events">Nb of events</text-property>
+                                </label>
+                            </cell>
+                        </row>
+                    </grid>
+                    <extended-item extensionName="Chart" id="6">
+                        <xml-property name="xmlRepresentation"><![CDATA[<ActuateChart version="2.6.1">
+ <ChartWithAxes version="2.6.1" type="Bar Chart" subType="Stacked">
+  <block>
+   <children _type="TitleBlock" visible="false">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <label>
+     <caption value="Number of events=&lt;Value of key &#039;Number of events&#039;&gt;">
+      <font name="Tahoma"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+   </children>
+   <children _type="Plot">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+   </children>
+   <children _type="Legend">
+    <outline>
+     <color _nil="1"/>
+    </outline>
+    <clientArea>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </clientArea>
+    <text>
+     <font name="Tahoma"/>
+     <color _body=",255,255,255,255"/>
+    </text>
+    <separator>
+     <color _nil="1"/>
+    </separator>
+    <title>
+     <caption>
+      <font name="Tahoma"/>
+      <color _body=",255,245,245,245"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+   </children>
+   <bounds _body="0.0,0.0,572.25,286.125"/>
+   <outline>
+    <color _nil="1"/>
+   </outline>
+   <background _body=",0,255,255,255"/>
+  </block>
+  <extendedProperties name="enable.area.alt" value="false"/>
+  <extendedProperties name="enable.drill.category" value="true"/>
+  <extendedProperties name="enable.drill.series" value="true"/>
+  <extendedProperties name="jschart.animation" value="true"/>
+  <extendedProperties name="jschart.series.shadow" value="false"/>
+  <extendedProperties name="jschart.zoom" value="xy"/>
+  <sampleData>
+   <baseSampleData dataSetRepresentation="01/05/2000,02/01/2000,04/12/2000,03/12/2000,02/29/2000"/>
+   <orthogonalSampleData dataSetRepresentation="6,4,12,8,10" seriesDefinitionIndex="0"/>
+  </sampleData>
+  <interactivity legendBehavior="1"/>
+  <emptyMessage>
+   <caption value="This chart contains no data."/>
+   <background _body=",64,127,127,127"/>
+   <outline>
+    <color _body=",128,127,127,127"/>
+   </outline>
+  </emptyMessage>
+  <axes type="3" interval="3">
+   <title visible="false">
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </title>
+   <associatedAxes primaryAxis="true" percent="false">
+    <title>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </title>
+    <seriesDefinitions sorting="0">
+     <query definition="row[&quot;LABEL_T&quot;]">
+      <grouping/>
+     </query>
+     <seriesPalette>
+      <entries _body=",255,250,76,78"/>
+      <entries _body=",255,254,230,96"/>
+      <entries _body=",255,76,248,198"/>
+      <entries _body=",255,128,255,128"/>
+      <entries _body=",255,64,128,128"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,170,85,85"/>
+      <entries _body=",255,128,128,0"/>
+      <entries _body=",255,192,192,192"/>
+      <entries _body=",255,255,255,128"/>
+      <entries _body=",255,128,192,128"/>
+      <entries _body=",255,7,146,94"/>
+      <entries _body=",255,0,128,255"/>
+      <entries _body=",255,255,128,192"/>
+      <entries _body=",255,0,255,255"/>
+      <entries _body=",255,255,128,128"/>
+      <entries _body=",255,0,128,192"/>
+      <entries _body=",255,128,128,192"/>
+      <entries _body=",255,255,0,255"/>
+      <entries _body=",255,128,64,64"/>
+      <entries _body=",255,255,128,64"/>
+      <entries _body=",255,80,240,120"/>
+      <entries _body=",255,0,64,128"/>
+      <entries _body=",255,128,0,64"/>
+      <entries _body=",255,255,0,128"/>
+      <entries _body=",255,128,128,64"/>
+      <entries _body=",255,128,128,128"/>
+      <entries _body=",255,255,128,255"/>
+      <entries _body=",255,0,64,0"/>
+      <entries _body=",255,0,0,0"/>
+      <entries _body=",255,255,255,255"/>
+      <entries _body=",255,255,128,0"/>
+     </seriesPalette>
+     <series _type="BarSeries" seriesIdentifier="Series 1" labelPosition="4" stacked="true" riser="0">
+      <label>
+       <background _nil="1"/>
+       <outline>
+        <color _nil="1"/>
+       </outline>
+      </label>
+      <dataDefinition definition="row[&quot;VALUE&quot;]">
+       <grouping/>
+      </dataDefinition>
+      <triggers condition="6">
+       <action type="1">
+        <value _type="TooltipValue" text="" delay="200"/>
+       </action>
+      </triggers>
+      <curveFitting _nil="1"/>
+     </series>
+     <sortKey definition="row[&quot;ORDER&quot;]"/>
+    </seriesDefinitions>
+    <lineAttributes visible="false">
+     <color _nil="1"/>
+    </lineAttributes>
+    <label>
+     <caption>
+      <font name="Tahoma"/>
+      <color _body=",255,245,245,245"/>
+     </caption>
+     <background _nil="1"/>
+     <outline>
+      <color _nil="1"/>
+     </outline>
+    </label>
+    <majorGrid>
+     <lineAttributes visible="true">
+      <color _body=",255,255,255,255"/>
+     </lineAttributes>
+     <tickAttributes visible="false">
+      <color _nil="1"/>
+     </tickAttributes>
+    </majorGrid>
+    <minorGrid>
+     <lineAttributes visible="true">
+      <color _body=",255,255,255,255"/>
+     </lineAttributes>
+     <tickAttributes>
+      <color _nil="1"/>
+     </tickAttributes>
+    </minorGrid>
+    <origin>
+     <value _nil="1"/>
+    </origin>
+   </associatedAxes>
+   <seriesDefinitions>
+    <query definition=""/>
+    <seriesPalette>
+     <entries _body=",255,80,166,218"/>
+     <entries _body=",255,242,88,106"/>
+     <entries _body=",255,232,172,57"/>
+     <entries _body=",255,128,255,128"/>
+     <entries _body=",255,64,128,128"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,170,85,85"/>
+     <entries _body=",255,128,128,0"/>
+     <entries _body=",255,192,192,192"/>
+     <entries _body=",255,255,255,128"/>
+     <entries _body=",255,128,192,128"/>
+     <entries _body=",255,7,146,94"/>
+     <entries _body=",255,0,128,255"/>
+     <entries _body=",255,255,128,192"/>
+     <entries _body=",255,0,255,255"/>
+     <entries _body=",255,255,128,128"/>
+     <entries _body=",255,0,128,192"/>
+     <entries _body=",255,128,128,192"/>
+     <entries _body=",255,255,0,255"/>
+     <entries _body=",255,128,64,64"/>
+     <entries _body=",255,255,128,64"/>
+     <entries _body=",255,80,240,120"/>
+     <entries _body=",255,0,64,128"/>
+     <entries _body=",255,128,0,64"/>
+     <entries _body=",255,255,0,128"/>
+     <entries _body=",255,128,128,64"/>
+     <entries _body=",255,128,128,128"/>
+     <entries _body=",255,255,128,255"/>
+     <entries _body=",255,0,64,0"/>
+     <entries _body=",255,0,0,0"/>
+     <entries _body=",255,255,255,255"/>
+     <entries _body=",255,255,128,0"/>
+    </seriesPalette>
+    <series seriesIdentifier="">
+     <label>
+      <background _nil="1"/>
+      <outline>
+       <color _nil="1"/>
+      </outline>
+     </label>
+     <dataDefinition definition="row[&quot;DATE&quot;]"/>
+     <curveFitting _nil="1"/>
+    </series>
+    <grouping enabled="true" groupingUnit="6" groupType="1"/>
+    <sortKey/>
+   </seriesDefinitions>
+   <lineAttributes visible="false">
+    <color _nil="1"/>
+   </lineAttributes>
+   <label>
+    <caption>
+     <font name="Tahoma" rotation="43.0"/>
+     <color _body=",255,245,245,245"/>
+    </caption>
+    <background _nil="1"/>
+    <outline>
+     <color _nil="1"/>
+    </outline>
+   </label>
+   <majorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes visible="true">
+     <color _body=",255,255,255,255"/>
+    </tickAttributes>
+   </majorGrid>
+   <minorGrid>
+    <lineAttributes>
+     <color _nil="1"/>
+    </lineAttributes>
+    <tickAttributes>
+     <color _nil="1"/>
+    </tickAttributes>
+   </minorGrid>
+   <scale step="3.0"/>
+   <origin>
+    <value _nil="1"/>
+   </origin>
+  </axes>
+  <rotation>
+   <angles/>
+  </rotation>
+ </ChartWithAxes>
+</ActuateChart>
+]]></xml-property>
+                        <property name="outputFormat">JS</property>
+                        <property name="inheritColumns">true</property>
+                        <property name="height">2.9270833333333335in</property>
+                        <property name="width">6.53125in</property>
+                        <property name="dataSet">Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">DATE</property>
+                                <text-property name="displayName">DATE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["DATE"]</expression>
+                                <property name="dataType">date</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL</property>
+                                <text-property name="displayName">LABEL</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">VALUE</property>
+                                <text-property name="displayName">VALUE</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["VALUE"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                            <structure>
+                                <property name="name">LABEL_T</property>
+                                <text-property name="displayName">LABEL_T</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["LABEL_T"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">ORDER</property>
+                                <expression name="expression">dataSetRow["ORDER"]</expression>
+                                <property name="dataType">integer</property>
+                            </structure>
+                        </list-property>
+                    </extended-item>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>

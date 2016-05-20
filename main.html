@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+<title>Metro Style Sample Application</title>
+<link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+<!-- 
+*******************************************************************
+*   CSS
+*******************************************************************
+-->
+<link rel="stylesheet" type="text/css" href="css/metro.css"/>
+<link rel="stylesheet" type="text/css" href="css/sampleMetroStyleApp.css"/>
+
+<link rel="stylesheet" type="text/css" href="css/jquery.gridster.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+<!-- 
+*******************************************************************
+*   JavaScript
+*******************************************************************
+-->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.gridster.min.js" type="text/javascript"></script>
+<script src="js/metro.js" type="text/javascript"></script>
+<script src="../../jsapi" type='text/javascript'></script>
+<script src="js/translation.js" type="text/javascript"></script>
+<!-- 
+*******************************************************************
+*   HTML
+*******************************************************************
+-->
+</head>
+
+<body>
+<div class="tile-area tile-area-scheme-dark">
+    <h1 class="tile-area-title fg-white-link fg-white"><span class="my-time"></span></h1>
+    <div class="tile-area-controls">
+        <button class="image-button icon-right bg-transparent fg-white bg-hover-dark no-border"><span class="sub-header no-margin text-light my-user-name"></span><span class="icon mif-user"></span></button>
+        <button class="square-button bg-transparent fg-white bg-hover-dark no-border"><span class="mif-search"></span></button>
+        <button class="square-button bg-transparent fg-white bg-hover-dark no-border"><span class="mif-cog"></span></button>
+        <a href="../../ssologout.do?__vp=Default Volume" class="square-button bg-transparent fg-white bg-hover-dark no-border"><span class="mif-switch"></span></a>
+    </div>
+<!--
+*******************************************************************
+	Widget
+*******************************************************************	
+-->
+<table>
+<tr>
+	<td style="width:60%" rowspan="3">
+	<section class="container">
+	<div class="wrapper gridster">
+		<ul>
+			<li data-row="1" data-col="1" data-sizex="2" data-sizey="1" class="bg-blue fg-white-link">
+			    <div>
+					<div class="widget-icon"><a href="JSAPI.html?type=design&name=mashboardReport&IV=false&param=false&size=mashboard"><span class="fa fa-th fa-5x"></span></a></div>
+					<div class="widget-title mashboardMenu">Mashboard</div>
+				</div>
+			</li>
+			<li data-row="2" data-col="1" data-sizex="2" data-sizey="1" class="bg-greenLight fg-white-link">
+			    <div>
+					<div class="widget-icon"><a href="JSAPI.html?type=design-t&name=salesOrderReport&IV=false&param=false&size=landscape"><span class="fa fa-table fa-5x"></span></a></div>
+					<div class="widget-title reportsMenu">Reporting</div>
+				</div>
+			</li>
+			<li data-row="3" data-col="1" data-sizex="2" data-sizey="1" class="bg-pink fg-white-link">
+			    <div>
+					<div class="widget-icon"><a id="analyticDashboardLink" href="JSAPI.html?type=dashboard&name=Analytics&IV=false&param=false&size=landscape"><span class="fa fa-dashboard fa-5x"></span></a></div>
+					<div class="widget-title dashboardMenu">Dashboard</div>
+				</div>
+			</li>
+<!-- 
+*  Link will be updated in tranlation.js
+-->	
+			<li data-row="1" data-col="3" data-sizex="2" data-sizey="1" class="bg-blueDark fg-white-link">
+			    <div>
+					<div class="widget-icon"><a id="myDashboardLink" target="_blank" href="#"><span class="fa fa-gears fa-5x"></span></a></div>
+					<div class="widget-title webtoolsMenu">Web Tools</div>
+				</div>
+			</li>
+			<li data-row="2" data-col="3" data-sizex="1" data-sizey="1" class="bg-red fg-white-link">
+			    <div>
+					<div class="widget-icon"><a target="_blank" href="http://developer.actuate.com"><span class="fa fa-globe fa-5x"></span></a></div>
+					<div class="widget-title communityMenu">Community</div>
+				</div>
+			</li>
+			<li data-row="3" data-col="3" data-sizex="1" data-sizey="1" class="bg-orangeDark fg-white-link">
+			    <div>
+					<div class="widget-icon"><a href="JSAPI.html?type=design&name=GoogleMap%20-%20Sales%20By%20Office&IV=true&param=false&size=landscape"><span class="fa fa-map-marker fa-5x"></span></a></div>
+					<div class="widget-title mapMenu">Maps</div>
+				</div>
+			</li>
+
+			<li data-row="2" data-col="4" data-sizex="2" data-sizey="1" class="bg-orangeDark fg-white-link">
+			    <div>
+					<div class="widget-icon"><a href="../../launchBA.jsp?user=Administrator"><span class="fa fa-line-chart fa-5x"></span></a></div>
+					<div class="widget-title analyticsMenu">Analytics</div>
+				</div>
+			</li>
+			<li data-row="3" data-col="4" data-sizex="1" data-sizey="1" class="bg-greenDark fg-white-link">
+			    <div>
+			    	<div class="widget-icon"><a href="JSAPI.html?type=design&name=JSAPICode&IV=false&param=true&size=portrait"><span class="fa fa-code fa-5x"></span></a></div>
+					<div class="widget-title JSAPIMenu">API</div>
+				</div>
+			</li>
+
+			<li data-row="1" data-col="5" data-sizex="1" data-sizey="1" class="bg-yellow fg-darken-link">
+			    <div>
+					<div class="widget-icon"><a href="JSAPI.html?type=design-t&name=secureReport&IV=false&param=false&size=landscape"><span class="fa fa-lock fa-5x"></span></a></div>
+					<div class="widget-title securityMenu">Security</div>
+				</div>
+			</li>
+			<li data-row="3" data-col="5" data-sizex="1" data-sizey="1" class="bg-red fg-white-link">
+			    <div>
+					<div class="widget-icon"><a href="JSAPI.html?type=design&name=chartExample1&IV=false&param=false&size=landscape"><span class="fa fa-bar-chart fa-5x"></span></a></div>
+					<div class="widget-title chartsMenu">Visual</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	</section>
+	</td>
+<!--
+*******************************************************************
+* Embedded content 
+*******************************************************************	
+-->
+	<td>
+		<div id="acContainer1" class="ac-widget"></div>		
+	</td>
+</tr>
+<tr><td height="10px"></td></tr>
+<tr>
+	<td>		
+		<div id="acContainer2" class="ac-widget"></div>		
+	</td>
+<tr>
+</table>
+</div>
+</body>
+
+<!-- 
+*******************************************************************
+*   JavaScript
+*******************************************************************
+-->
+<script type="text/javascript">
+var gridster;
+
+jQuery(function(){
+		gridster = jQuery(".gridster ul").gridster({
+			widget_margins: [5, 5],
+			widget_base_dimensions: [150, 150]
+			}).data('gridster');
+});
+
+
+var host = location.host;
+var parameters = location.pathname.split("/");
+var appName = parameters[3].split('%20').join(' ');
+
+actuate.load('viewer');
+designName1 = '/Applications/' + appName + '/Report Designs/mashboard1.rptdesign';
+designName2 = '/Applications/' + appName + '/Report Designs/mashboard2.rptdesign';
+var reqOps = new actuate.RequestOptions( );
+reqOps.setRepositoryType(actuate.RequestOptions.REPOSITORY_ENCYCLOPEDIA);
+
+<!-- load page -->
+actuate.initialize( 'http://' + host + '/iportal/', reqOps==undefined?null:reqOps, null, null, myInit);
+
+jQuery(function(){
+	setInterval(myLoad1, 10000);
+});
+
+function myLoad1(){
+	var options = new actuate.viewer.UIOptions( );
+	options.enableToolBar(false);
+
+	viewer = new actuate.Viewer( 'acContainer1' );
+	viewer.setReportDesign(designName1);
+	viewer.setReportletBookmark('knob chart');
+	viewer.setSize(650,265);
+	viewer.setUIOptions( options );
+	viewer.submit();	
+};
+
+function myInit(){
+	var options = new actuate.viewer.UIOptions( );
+	options.enableToolBar(false);
+
+	viewer1 = new actuate.Viewer( 'acContainer1' );
+	viewer1.setReportDesign(designName1);
+	viewer1.setReportletBookmark('knob chart');
+	viewer1.setSize(650,265);
+	viewer1.setUIOptions( options );
+	viewer1.submit();
+	
+	viewer2 = new actuate.Viewer( 'acContainer2' );
+	viewer2.setReportDesign(designName2);
+	viewer2.setReportletBookmark('line chart');
+	viewer2.setSize(650,350);
+	viewer2.setUIOptions( options );
+	viewer2.submit();	
+};
+</script>
+</html>
